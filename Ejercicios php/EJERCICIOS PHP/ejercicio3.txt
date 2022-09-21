@@ -1,0 +1,14 @@
+Escriba después de "Hola mundo!" "Esta página ha sido programada por "
+
+**********************************************************************
+
+<?php
+    $hola = "hola mundo";
+?>
+<html>
+    <body>
+        
+	<?php echo $hola . " Esta pagina ha sido programada por Marcos" ?>
+	
+    </body>
+</html>

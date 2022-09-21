@@ -1,0 +1,44 @@
+Utilice 3 variables: $nombre, $r, $pi. Al visitar la página establecerá el valor de las variables,
+ escribirá un mensaje de bienvenida y escribirá el área y el perímetro de la circunferencia.
+ NOTA: Utiliza un fichero css para dar estilo a cada parte.
+
+**************************************************************************************************
+
+
+<?php
+    $nombre = "Marcos";
+    $r = 10;
+    $pi = 3.14;
+?>
+
+<html>
+    <head>
+        <style>
+        
+            h1{
+                color: #EB0B02;
+                letter-spacing: 1px;
+                font-style: italic;
+            }
+            
+            #area{
+                color: #0245F8;
+                font-size: 24px;
+            }
+            
+            #perimetro{
+                color: #F57402;
+                font-size: 24px;
+            }
+            
+        </style>
+    </head>
+    
+    <body>
+        
+	<h1><?php echo "Bienvenido " . $nombre ?></h1>
+	<p id="area"><?php echo "El area de la circunferencia es " . $pi*($r*$r) ?></p>
+	<p id="perimetro"><?php echo "El perimetro de la circunferencia es " . 2*$r*$pi ?></p>
+
+    </body>
+</html>

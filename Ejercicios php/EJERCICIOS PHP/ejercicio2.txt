@@ -1,0 +1,14 @@
+Escriba "Hola mundo!" usando una variable para almacenar la cadena
+
+******************************************************************
+
+<?php
+    $hola = "hola mundo";
+?>
+<html>
+    <body>
+        
+	<?php echo $hola ?>
+	
+    </body>
+</html>

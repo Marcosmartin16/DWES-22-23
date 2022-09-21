@@ -1,0 +1,14 @@
+Escriba "Hola mundo!" de forma dinámica con la instrucción echo
+
+***************************************************************
+
+<?php
+
+?>
+<html>
+    <body>
+        
+	<?php echo "hola mundo" ?>
+	
+    </body>
+</html>
