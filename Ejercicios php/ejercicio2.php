@@ -8,7 +8,7 @@ Escriba "Hola mundo!" usando una variable para almacenar la cadena
 <html>
     <body>
         
-	<?php echo $hola ?>
+	<p><?= $hola ?></p>
 	
     </body>
 </html>

@@ -8,7 +8,7 @@ Escriba después de "Hola mundo!" "Esta página ha sido programada por "
 <html>
     <body>
         
-	<?php echo $hola . " Esta pagina ha sido programada por Marcos" ?>
+	<p><?= $hola ?> Esta pagina ha sido programada por Marcos</p>
 	
     </body>
 </html>

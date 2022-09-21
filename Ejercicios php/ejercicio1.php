@@ -8,7 +8,7 @@ Escriba "Hola mundo!" de forma dinámica con la instrucción echo
 <html>
     <body>
         
-	<?php echo "hola mundo" ?>
+	<p><<?= "hola mundo" ?></p>
 	
     </body>
 </html>

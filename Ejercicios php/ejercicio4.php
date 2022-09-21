@@ -10,8 +10,8 @@ en cursiva y negrita. NOTA: Puedes utilizar el operador "." para concatenar la s
 <html>
     <body>
         
-	<p><?php echo $hola ?></p>
-	</p><i><?php echo " Esta pagina a sido programada por " ?></i>  <i><b><?php echo $nombre ?></b></i></p>
+	<p><?=$hola ?></p>
+	</p><i>Esta pagina a sido programada por <b><?= $nombre ?></b></i></p>
 	
     </body>
 </html>
