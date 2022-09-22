@@ -8,17 +8,18 @@
 
 <html>
     <body>
-        
+    <br>
     <?php for ($i = 1; $i <= $n_filas; $i++) { ?>
        
         <?php for ($espacios = 1; $espacios <= $n_filas - $i; $espacios++) { ?>
-            <?php echo '&nbsp;' ?>
+            <?= '&nbsp;' ?>
         <?php } ?>
         
         <?php for ($asteriscos = 1; $asteriscos <= ($i*2) - 1; $asteriscos++) { ?>
-            <?php echo "*" ?>
+            <?= "*" ?>
         <?php } ?>
-        <?php echo '<br>' ?>
+
+        <?='<br>' ?>
     <?php } ?>
 
     </body>
