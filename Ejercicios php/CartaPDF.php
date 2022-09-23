@@ -12,12 +12,18 @@
 
             $pdf = new FPDF();
             $pdf -> AddPage();
-            $pdf -> SetFont('Arial', 'B', 18);
+            $pdf -> SetFont('Arial', 'B', 12);
             
             //$pdf -> Cell(0,20, 'Hola mi nombre es ' . $nombre . ' te escribo desde la empresa ' . $empresa .' donde mi responsable es ' . $responsable . ' a fecha de  ' . $fecha);
             //MultiCell(ancho =0 ancho de pagina, alto = 20 anchura de la linea, luego texto, si quieres entre corchetes puedes añadir bordes)
-            $pdf -> MultiCell(0,20, 'Hola mi nombre es ' . $nombre . ' te escribo desde la empresa ' . $empresa .' donde mi responsable es ' . $responsable . ' a fecha de  ' . $fecha);
             
+            $pdf -> Cell(1,16,'Hola mi nombre es ' . $nombre) ;
+            $pdf -> Ln();
+            $pdf -> SetFont('Arial', '', 10);
+            $pdf -> MultiCell(0,5, 'Te escribo desde la empresa ' . $empresa .' donde mi responsable es ' . $responsable . '. Te escribo por el problema con el Lorem fistrum dise usteer sexuarl pecador diodeno la cosa muy malar de la pradera llevame al sircoo caballo blanco caballo negroorl fistro. Ese que llega al ataquerl apetecan pecador. Pupita ese hombree dise usteer torpedo jarl. A gramenawer la caidita apetecan benemeritaar. Diodeno pupita amatomaa condemor ese que llega diodenoo. Fistro llevame al sircoo jarl diodeno a wan va muy cargadoo apetecan amatomaa dise usteer. Sexuarl pecador a peich al ataquerl llevame al sircoo te va a pupitaa ese hombree. ', 'J');
+            $pdf -> Ln();
+            $pdf -> SetFont('Arial', 'B', 12);
+            $pdf -> Cell(1,16, ' En Madrid a fecha de  ' . $fecha) ;
             $pdf -> Output();
         }
     }
