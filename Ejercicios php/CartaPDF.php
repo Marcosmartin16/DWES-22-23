@@ -5,16 +5,18 @@
         $responsable = $_GET['responsable'];
         $fecha = $_GET['fecha'];
 
+        
+
         if($nombre != "" && $empresa != "" && $responsable != ""){
             require('fpdf184/fpdf.php');
+
+            $carta = wordwrap($rowSelectDetalle['Hola mi nombre es ' . $nombre . ' te escribo desde la empresa ' . $empresa .' donde mi responsable es ' . $responsable . ' a fecha de  ' . $fecha], 70, "\n", true);
 
             $pdf = new FPDF();
             $pdf -> AddPage();
             $pdf -> SetFont('Arial', 'B', 18);
-            $pdf -> Cell(60,20, 'Hola mi nombre es ' . $nombre );
-            $pdf -> Cell(60,30,' te escribo desde la empresa ' . $empresa );
-            $pdf -> Cell(60,40,' donde mi responsable es ' . $responsable );
-            $pdf -> Cell(60,50," a fecha de  " . $fecha );
+            //MultiCell(ancho =0 ancho de pagina, alto = 20 anchura de la linea, luego texto, si quieres entre corchetes puedes añadir bordes)
+            $pdf -> MultiCell(0,20, 'Hola mi nombre es ' . $nombre . ' te escribo desde la empresa ' . $empresa .' donde mi responsable es ' . $responsable . ' a fecha de  ' . $fecha);
     
             $pdf -> Output();
         }
