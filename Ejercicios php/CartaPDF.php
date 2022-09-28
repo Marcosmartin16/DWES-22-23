@@ -16,7 +16,10 @@
             
             //$pdf -> Cell(0,20, 'Hola mi nombre es ' . $nombre . ' te escribo desde la empresa ' . $empresa .' donde mi responsable es ' . $responsable . ' a fecha de  ' . $fecha);
             //MultiCell(ancho =0 ancho de pagina, alto = 20 anchura de la linea, luego texto, si quieres entre corchetes puedes añadir bordes)
-            
+            /*<<<EOS 
+                dgfjaasñlg,jgvdzfsvgñaob.ahò.a`go+
+            EOS;*/
+
             $pdf -> Cell(1,16,'Hola mi nombre es ' . $nombre) ;
             $pdf -> Ln();
             $pdf -> SetFont('Arial', '', 10);
