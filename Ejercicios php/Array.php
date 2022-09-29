@@ -8,7 +8,7 @@
         5 => [1 => "DWES", 2 => "DWES", 3 => "DWES", 4 => "RECREO", 5 => "DWEC", 6 => "DWEC", 7 => "DWEC"],
     ];
 
-    /*$horario = [
+    $horario = [
         0 => [0 => "HORAS", 1 => "LUNES", 2 => "MARTES", 3 => "MIERCOLES", 4 => "JUEVES", 5 => "VIERNES"],
         1 => [0 => "16:00-16:55", 1 => "DWEC", 2 => "IT", 3 => "DIW", 4 => "EIE", 5 => "DWES"],
         2 => [0 => "16:55-17:50", 1 => "DWEC", 2 => "DAW", 3 => "DIW", 4 => "DAW", 5 => "DWES"],
@@ -17,7 +17,7 @@
         5 => [0 => "19:10-20:05", 1 => "EIE", 2 => "DIW", 3 => "DWES", 4 => "DWES", 5 => "DWEC"],
         6 => [0 => "20:05-21:00", 1 => "EIE", 2 => "DIW", 3 => "DWES", 4 => "DWES", 5 => "DWEC"],
         7 => [0 => "21:00-21:55", 1 => "IT", 2 => "DIW", 3 => "DWES", 4 => "DWES", 5 => "DWEC"],
-    ];*/
+    ];
 ?>
 
 <!DOCTYPE html>
@@ -30,10 +30,18 @@
 </head>
 <body>
     <table border= "5">
-        <?php for($i = 1; $i <= 7; $i++){?>
+        <?php for($i = 0; $i <= 7; $i++){?>
             <tr>
-                <?php for($j = 1; $j <= 5; $j++){?>
-                    <td><?= $dia = $horario[$j][$i]?></td>
+                <?php for($j = 0; $j <= 5; $j++){?>
+                    <?php if($horario[$i][$j] != $horario[$i-1][$j] && $horario[$i][$j] != $horario[$i+1][$j]){?>
+                        <td><?= $dia = $horario[$i][$j]?></td>
+                    <?php }else{ ?>
+                        <?php if($horario[$i][$j] == $horario[$i+1][$j] && $horario[$i][$j] == $horario[$i+2][$j]){ ?>
+                            <td rowspan = "3"><?= $dia = $horario[$i][$j]?></td>
+                        <?php }if($horario[$i][$j] == $horario[$i+1][$j] && $horario[$i][$j] != $horario[$i+2][$j] && $horario[$i][$j] != $horario[$i-1][$j] ){ ?>
+                            <td rowspan = "2"><?= $dia = $horario[$i][$j]?></td>
+                        <?php } ?>
+                    <?php } ?>
                 <?php } ?>
             </tr>
         <?php } ?>
