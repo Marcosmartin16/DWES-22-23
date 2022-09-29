@@ -27,14 +27,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        td{
+            text-align: center;
+        }
+
+        #DWEC{
+
+        }
+
+        #EIE{
+
+        }
+
+        #IT{
+
+        }
+
+        #DAW{
+
+        }
+
+        #DIW{
+
+        }
+
+        #DWES{
+
+        }
+
+        #RECREO{
+
+        }
+    </style>
 </head>
 <body>
     <table border= "5">
         <?php for($i = 0; $i <= 7; $i++){?>
             <tr>
-                <?php for($j = 0; $j <= 5; $j++){?>
+                <?php for($j = 0; $j <= 5; $j++){
+                    $asignatura = "";
+                    switch($horario[$i][$j]){
+                        case "DWEC":
+                            $asignatura == "DWEC";
+                            break;
+                        case "EIE":
+                            $asignatura == "EIE";
+                            break;
+                        case "IT":
+                            $asignatura == "IT";
+                            break;
+                        case "DAW":
+                            $asignatura == "DAW";
+                            break;
+                        case "DIW":
+                            $asignatura == "DIW";
+                            break;
+                        case "DWES":
+                            $asignatura == "DWES";
+                            break;
+                        case "RECREO":
+                            $asignatura == "RECREO";
+                            break;
+                    }
+                    }?>
+
                     <?php if($horario[$i][$j] != $horario[$i-1][$j] && $horario[$i][$j] != $horario[$i+1][$j]){?>
-                        <td><?= $dia = $horario[$i][$j]?></td>
+                        <?php if($horario[$i][$j] == $horario[$i][$j+4]){?>
+                            <td colspan = "5" <?= "id = " . $asignatura?>  ><?= $dia = $horario[$i][$j]?></td>
+                        <?php }if($horario[$i][$j] != $horario[$i][$j+1] && $horario[$i][$j] != $horario[$i][$j-1]){ ?>
+                            <td><?= $dia = $horario[$i][$j]?></td>
+                        <?php } ?>
                     <?php }else{ ?>
                         <?php if($horario[$i][$j] == $horario[$i+1][$j] && $horario[$i][$j] == $horario[$i+2][$j]){ ?>
                             <td rowspan = "3"><?= $dia = $horario[$i][$j]?></td>
