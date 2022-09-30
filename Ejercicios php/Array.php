@@ -1,12 +1,12 @@
 <?php
 
-    $horario = [
+    /*$horario = [
         1 => [1 => "DWEC", "DWEC","DWEC","RECREO","EIE","EIE","IT"],
         2 => [1 => "IT", 2 => "DAW", 3 => "DAW", 4 => "RECREO", 5 => "DIW", 6 => "DIW", 7 => "DIW"],
         3 => [1 => "DIW", 2 => "DIW", 3 => "DIW", 4 => "RECREO", 5 => "DWES", 6 => "DWES", 7 => "DWES"],
         4 => [1 => "EIE", 2 => "DAW", 3 => "DAW", 4 => "RECREO", 5 => "DWES", 6 => "DWES", 7 => "DWES"],
         5 => [1 => "DWES", 2 => "DWES", 3 => "DWES", 4 => "RECREO", 5 => "DWEC", 6 => "DWEC", 7 => "DWEC"],
-    ];
+    ];*/
 
     $horario = [
         0 => [0 => "HORAS", 1 => "LUNES", 2 => "MARTES", 3 => "MIERCOLES", 4 => "JUEVES", 5 => "VIERNES"],
@@ -33,31 +33,31 @@
         }
 
         #DWEC{
-
+            background-color: aqua;
         }
 
         #EIE{
-
+            background-color: aqua;
         }
 
         #IT{
-
+            background-color: aqua;
         }
 
         #DAW{
-
+            background-color: aqua;
         }
 
         #DIW{
-
+            background-color: aqua;
         }
 
         #DWES{
-
+            background-color: aqua;
         }
 
         #RECREO{
-
+            background-color: aqua;
         }
     </style>
 </head>
@@ -89,20 +89,20 @@
                         case "RECREO":
                             $asignatura == "RECREO";
                             break;
-                    }
+                        
                     }?>
 
                     <?php if($horario[$i][$j] != $horario[$i-1][$j] && $horario[$i][$j] != $horario[$i+1][$j]){?>
                         <?php if($horario[$i][$j] == $horario[$i][$j+4]){?>
-                            <td colspan = "5" <?= "id = " . $asignatura?>  ><?= $dia = $horario[$i][$j]?></td>
+                            <td colspan = "5" id = "<?=$asignatura?>"  ><?= $dia = $horario[$i][$j]?></td>
                         <?php }if($horario[$i][$j] != $horario[$i][$j+1] && $horario[$i][$j] != $horario[$i][$j-1]){ ?>
-                            <td><?= $dia = $horario[$i][$j]?></td>
+                            <td id = "<?=  $asignatura?>"><?= $dia = $horario[$i][$j]?></td>
                         <?php } ?>
                     <?php }else{ ?>
                         <?php if($horario[$i][$j] == $horario[$i+1][$j] && $horario[$i][$j] == $horario[$i+2][$j]){ ?>
-                            <td rowspan = "3"><?= $dia = $horario[$i][$j]?></td>
+                            <td rowspan = "3" id = "<?=  $asignatura?>"><?= $dia = $horario[$i][$j]?></td>
                         <?php }if($horario[$i][$j] == $horario[$i+1][$j] && $horario[$i][$j] != $horario[$i+2][$j] && $horario[$i][$j] != $horario[$i-1][$j] ){ ?>
-                            <td rowspan = "2"><?= $dia = $horario[$i][$j]?></td>
+                            <td rowspan = "2" id = "<?=  $asignatura?>"><?= $dia = $horario[$i][$j]?></td>
                         <?php } ?>
                     <?php } ?>
                 <?php } ?>
