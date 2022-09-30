@@ -92,20 +92,28 @@
                         
                     }?>
 
-                    <?php if($horario[$i][$j] != $horario[$i-1][$j] && $horario[$i][$j] != $horario[$i+1][$j]){?>
-                        <?php if($horario[$i][$j] == $horario[$i][$j+4]){?>
+                    <?php if($horario[$i][$j] != $horario[$i-1][$j] && $horario[$i][$j] != $horario[$i+1][$j]){
+                        if($horario[$i][$j] == $horario[$i][$j+4]){?><!--recreo-->
+                            
                             <td colspan = "5" id = "<?=$asignatura?>"  ><?= $dia = $horario[$i][$j]?></td>
-                        <?php }if($horario[$i][$j] != $horario[$i][$j+1] && $horario[$i][$j] != $horario[$i][$j-1]){ ?>
+                        
+                        <?php }if($horario[$i][$j] != $horario[$i][$j+1] && $horario[$i][$j] != $horario[$i][$j-1]){ ?><!--asignaturas 1 hora -->
+                            
                             <td id = "<?=  $asignatura?>"><?= $dia = $horario[$i][$j]?></td>
-                        <?php } ?>
-                    <?php }else{ ?>
-                        <?php if($horario[$i][$j] == $horario[$i+1][$j] && $horario[$i][$j] == $horario[$i+2][$j]){ ?>
+
+                        <?php }
+                    }else{ 
+                        if($horario[$i][$j] == $horario[$i+1][$j] && $horario[$i][$j] == $horario[$i+2][$j]){ ?><!--asignaturas 3 horas -->
+                            
                             <td rowspan = "3" id = "<?=  $asignatura?>"><?= $dia = $horario[$i][$j]?></td>
-                        <?php }if($horario[$i][$j] == $horario[$i+1][$j] && $horario[$i][$j] != $horario[$i+2][$j] && $horario[$i][$j] != $horario[$i-1][$j] ){ ?>
+                        
+                        <?php }if($horario[$i][$j] == $horario[$i+1][$j] && $horario[$i][$j] != $horario[$i+2][$j] && $horario[$i][$j] != $horario[$i-1][$j] ){ ?><!--asignatura 2 horas -->
+                            
                             <td rowspan = "2" id = "<?=  $asignatura?>"><?= $dia = $horario[$i][$j]?></td>
-                        <?php } ?>
-                    <?php } ?>
-                <?php } ?>
+                        
+                        <?php } 
+                    }
+                } ?>
             </tr>
         <?php } ?>
     </table>
