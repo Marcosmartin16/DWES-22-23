@@ -59,6 +59,7 @@
         #RECREO{
             background-color: aqua;
         }
+
     </style>
 </head>
 <body>
@@ -89,13 +90,15 @@
                         case "RECREO":
                             $asignatura == "RECREO";
                             break;
-                        
+                        default:
+                            
+                            break;
                     }?>
 
                     <?php if($horario[$i][$j] != $horario[$i-1][$j] && $horario[$i][$j] != $horario[$i+1][$j]){
                         if($horario[$i][$j] == $horario[$i][$j+4]){?><!--recreo-->
                             
-                            <td colspan = "5" id = "<?=$asignatura?>"  ><?= $dia = $horario[$i][$j]?></td>
+                            <td colspan = "5" id = "<? $asignatura?>"  ><?= $dia = $horario[$i][$j]?></td>
                         
                         <?php }if($horario[$i][$j] != $horario[$i][$j+1] && $horario[$i][$j] != $horario[$i][$j-1]){ ?><!--asignaturas 1 hora -->
                             
