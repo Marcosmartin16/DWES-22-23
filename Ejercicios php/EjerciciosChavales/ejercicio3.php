@@ -4,7 +4,7 @@
 
     $array2 = [11,12,3,14,15,6,7,8,19,20];
 
-    //array con los numeros q se repiten en ambos arrais
+    //array con los numeros q se repiten en ambos arrays
     $array3 = array_intersect($array1, $array2);
 
     print_r($array3);
