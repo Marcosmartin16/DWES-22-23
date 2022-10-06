@@ -1,15 +1,21 @@
 <?php
 
-    $comida = [
-        0 => ["Banana",3,56],
-        1 => ["Chuleta",1,256],
-        2 => ["Pan",1,90],
-    ];
+    $array1 = [1,2,3,4,5,6,7,8,9,10];
 
-    $cal = array_reduce($comida,function($acumulador,$valor){
-        return $acumulador + ($valor[1] * $valor[2]);
-    });
+    $array2 = [11,12,3,14,15,6,7,8,19,20];
 
-    print_r($cal);
+    //array con los numeros q se repiten en ambos arrays
+    $array3 = array_intersect($array1, $array2);
 
+    print_r($array3);
+
+    //array con los numeros distintos entre ambos arrays
+    $array4 = array_diff_key($array1,$array3);
+
+    print_r($array4);
+
+    //reemplazar array interseccion y el array de distintos para crear un array con todos los numeros unicos
+    $union = array_replace($array3, $array4);
+
+    print_r($union);
 ?>
