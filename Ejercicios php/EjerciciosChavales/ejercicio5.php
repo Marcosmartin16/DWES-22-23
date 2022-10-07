@@ -33,8 +33,25 @@
         $leche = $_GET['leche'];
         $pizza = $_GET['pizza'];
         $helado = $_GET['helado'];
+
+        $arr = [$naranja, $manzana, $pera, $platano, $kiwi, $macarrones, $arroz, $salchichas, $patatas, $paninis, $leche, $pizza, $helado]; 
+
+        for($i = 0; $i <= sizeof($productos); $i++){
+            $arr_int[$i] = floatval($arr[$i]);
+        }
+
+        function precios ($clave, $clave2){
+            return $clave * $clave2;
+        }
+
+        $array_total = array_map("precios", $productos, $arr_int);
+        
+        /*print_r($arr_int);
+        print_r($productos);
+        print_r($array_total);*/
     }
 
+    
 
 ?>
 <!DOCTYPE html>
@@ -64,5 +81,6 @@
             <input type="submit" value="enviar">
         </form>
     </div>
+    <div>La suma total de la compra es de: <?= array_sum($array_total)?> €.</div>
 </body>
 </html>
