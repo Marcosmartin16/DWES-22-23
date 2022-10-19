@@ -5,25 +5,32 @@
     $maximo = 20;
     $minimo = 10;
 
-    function aleatorio($a, $b, $c){
-        
+    function aleatorio($a = 0, $b = 0, $c = 100){
+
+        for($i = 0; $i < 10; $i++){
+            $array[$i] = rand(0,100);
+        }
 
         for($i = 0; $i < $a; $i++){
             $array[$i] = rand(0,100);
         }
 
-        /*for($i = 0; $i < $a; $i++){
-            $array[$i] = rand(0,$b);
-        }*/   
+        for($i = 0; $i < $a; $i++){
+            $array[$i] = rand($b,100);
+        }
 
-        /*for($i = 0; $i < $a; $i++){
-            $array[$i] = rand($c,$b);
-        } */  
+        for($i = 0; $i < $a; $i++){
+            $array[$i] = rand($b,$c);
+        }
 
         return $array;
     }
 
-    echo aleatorio($numeros);
-    /*echo aleatorio($numeros,$maximo);
-    echo aleatorio($numeros,$maximo,$minimo);*/
+    print_r(aleatorio());
+    echo "<br>";
+    print_r(aleatorio($numeros));
+    echo "<br>";
+    print_r(aleatorio($numeros, $minimo));
+    echo "<br>";
+    print_r(aleatorio($numeros, $minimo, $maximo));
 ?>
