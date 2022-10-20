@@ -9,7 +9,7 @@
         function __construct($nombre = "anonimo",$saldo = 0){
             $this->nombre = $nombre;
             $this->saldo = $saldo;
-            self::$numeroCuenta++;
+            $this->numeroCuenta = self::$numeroCuenta++;
         }
 
         function ingresar(float $cantidad){
@@ -40,8 +40,8 @@
             $this->ingresar($saldoC);
         }
 
-        function mostrar(...$c){
-            echo "Numero de cuenta: " . self::$numeroCuenta . " Nombre: " . $this->nombre . " Saldo: " . $this->saldo;
+        function mostrar(){
+            echo "<div><span> Numero de cuenta: " . $this->numeroCuenta . "</span><span> Nombre: " . $this->nombre . "</span><span> Saldo: " . $this->saldo . "<span></div>";
         }
     }
 ?>

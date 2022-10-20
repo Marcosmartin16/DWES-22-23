@@ -37,6 +37,9 @@
     <?php $agapito->transferirA($agapito->saldo()/2, $milloneti)?>
     <h4> Saldo actual de Agapito <?=$agapito->saldo()?> saldo actual de milloneti <?=$milloneti->saldo()?></h4>
 
-    <?=mostrar($milloneti, $agapito, $pobreton)?>
+    <?=$milloneti->mostrar()?>
+    <?=$agapito->mostrar()?>
+    <?=$pobreton->mostrar()?>
+
 </body>
 </html>
