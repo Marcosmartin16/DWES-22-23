@@ -1,6 +1,6 @@
 <?php
 
-include('Coche.php');
+require('Coche.php');
 
 Class CocheConRemolque extends Coche{
 
