@@ -30,6 +30,12 @@
     $coche_grua2->setMarca("RENAULT");
     $coche_grua2->setCarga(20);
 
+    $coche_grua = new CocheGrua();
+    $coche_grua->setMatricula(1003);
+    $coche_grua->setMarca("RENAULT");
+    $coche_grua->setCarga(20);
+    $coche_grua->cargar($coche2);
+
     $array = [$coche, $coche_remolque, $coche_grua, $coche_grua2];
 
     array_walk($array, function($item, $clave){

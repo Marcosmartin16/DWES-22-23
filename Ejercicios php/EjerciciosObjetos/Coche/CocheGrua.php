@@ -18,7 +18,7 @@ Class CocheGrua extends Coche{
         parent::pintar();
         if($this->cocheCargado == null){
             echo "<br> No lleva ningun coche";
-        }else{
+        }else if($this->cocheCargado != null){
             echo "<br> Lleva coche: " . $this->cocheCargado->getMatricula() . ", " . $this->cocheCargado->getMarca() . " con carga: " . $this->cocheCargado->getCarga();
         }
     }
