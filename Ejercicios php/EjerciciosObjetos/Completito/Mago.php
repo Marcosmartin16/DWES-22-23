@@ -5,7 +5,7 @@
 abstract class Mago{
 
     function defender(){
-        echo "!HECHIZO PROTECTOR¡";
+        echo "MAGO: !HECHIZO PROTECTOR¡ <br>";
     }
 
     abstract function atacar();
@@ -13,13 +13,13 @@ abstract class Mago{
 
 class MagoBlanco extends Mago{
     function atacar(){
-        echo "!ATAQUE DE LUZ¡";
+        echo "MAGO BLANCO: !ATAQUE DE LUZ¡ <br>";
     }
 }
 
 class MagoOscuro extends Mago{
     function atacar(){
-        echo "!ATAQUE DE SOMBRA¡";
+        echo "MAGO OSCURO: !ATAQUE DE SOMBRA¡ <br>";
     }
 }
 

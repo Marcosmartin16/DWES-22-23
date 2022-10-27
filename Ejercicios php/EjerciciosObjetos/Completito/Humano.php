@@ -6,11 +6,11 @@ require_once('Personaje.php');
 class Humano implements Personaje{
 
     function atacar(){
-        echo "!PUÑETAZO¡";
+        echo "HUMANO: !PUÑETAZO¡ <br>";
     }
 
     function defender(){
-        echo "!BLOQUEO¡";
+        echo "HUMANO: !BLOQUEO¡ <br>";
     }
 }
 
