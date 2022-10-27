@@ -1,5 +1,5 @@
 <?php
-
+define("SUBIDA", 6);
 class Usuario{
 
     private $nombre;
@@ -7,21 +7,20 @@ class Usuario{
     private $deporte;
     private $nivel = 0;
     private $puntos = 0;
+    protected $seis; 
 
-    function setNombre($nombre){$this->nombre = $nombre;}
-    function getNombre(){return $this->nombre;}
-
-    function setApellido($apellido){$this->apellido = $apellido;}
-    function getApellido(){return $this->apellido;}
-
-    function setDeporte($deporte){$this->deporte = $deporte;}
-    function getDeporte(){return $this->deporte;}
-
+    public function __construct(string $nombre, string $apellido, string $deporte){
+        $this->nombre = $nombre;
+        $this->apellido = $apellido;
+        $this->deporte = $deporte;
+        $this->seis = SUBIDA;
+    }
+    
     function introducirResultado($resultado){
         if($resultado == "victoria"){
             $this->puntos += 1;
             echo $this->nombre . " Ha ganado el partido <br>";
-            if($this->puntos == 6){
+            if($this->puntos == $this->seis){
                 $this->puntos = 0;
                 $this->nivel = $this->nivel + 1;
                 echo $this->nombre . " Ha ascendido al nivel " . $this->nivel . " Nivel anterior " . $this->nivel-1 . "<br>";

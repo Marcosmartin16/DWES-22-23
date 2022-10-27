@@ -2,10 +2,10 @@
 
 require('UsuarioA.php');
 
-$usuario1 = new Usuario();
-$usuario1->setNombre("Marcos");
-$usuario1->setApellido("Martin");
-$usuario1->setDeporte("FOOTBALL");
+$usuario1 = new Usuario("Marcos", "Martin", "FOOTBALL");
+/*$usuario1->setNombre();
+$usuario1->setApellido();
+$usuario1->setDeporte();*/
 
 $usuario1->introducirResultado("victoria");
 echo "<p>" . $usuario1->imprimirInfo() . "</p>";
@@ -28,10 +28,10 @@ echo "<p>" . $usuario1->imprimirInfo() . "</p>";
 
 //$usuarioP = new UsuarioP();
 
-$usuarioA = new UsuarioA();
-$usuarioA->setNombre("Socram");
-$usuarioA->setApellido("Martin");
-$usuarioA->setDeporte("FOOTBALL");
+$usuarioA = new UsuarioA("Socram", "Martin", "FOOTBALL");
+/*$usuarioA->setNombre();
+$usuarioA->setApellido();
+$usuarioA->setDeporte();*/
 
 $usuarioA->crearPartido();
 
