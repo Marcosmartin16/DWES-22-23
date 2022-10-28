@@ -1,6 +1,6 @@
 <?php
 
-class Objeto{
+class Objetos{
 
     private $peso;
     private $descripcion;

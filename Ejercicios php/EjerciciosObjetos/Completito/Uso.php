@@ -1,9 +1,17 @@
 <?php
-
+/*
 require('Edificio.php');
 require('Humano.php');
 require('Mago.php');
-require('Objetos.php');
+require('Objetos.php');*/
+
+
+spl_autoload_register(function ($class) {
+    $classPath = "./";
+    echo $class . " Creado ";
+    
+    require("$classPath${class}.php");
+});
 
 $edificio = new Edificio();
 $edificio->setAltura(20);
@@ -16,10 +24,11 @@ $magoB = new MagoBlanco();
 
 $magoO = new MagoOscuro();
 
-$objeto = new Objeto();
+$objeto = new Objetos();
 $objeto->setPeso(20);
 $objeto->setDescripcion("SOY UNA PIEDRA");
 echo "Objeto creado: " . $objeto->getDescripcion() . " con un peso de: " . $objeto->getPeso() . "<br>";
+
 
 $magoB->atacar();
 $magoO->defender();
