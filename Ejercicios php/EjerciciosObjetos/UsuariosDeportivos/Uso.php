@@ -1,11 +1,10 @@
 <?php
 
 require('UsuarioA.php');
+require('UsuarioP.php');
 
+//USUARIO NORMAL
 $usuario1 = new Usuario("Marcos", "Martin", "FOOTBALL");
-/*$usuario1->setNombre();
-$usuario1->setApellido();
-$usuario1->setDeporte();*/
 
 $usuario1->introducirResultado("victoria");
 echo "<p>" . $usuario1->imprimirInfo() . "</p>";
@@ -25,13 +24,20 @@ echo "<p>" . $usuario1->imprimirInfo() . "</p>";
 $usuario1->introducirResultado("victoria");
 echo "<p>" . $usuario1->imprimirInfo() . "</p>";
 
+//USUARIO PREMIUM
+$usuarioP = new UsuarioP("Martin", "Martin", "FOOTBALL");
 
-//$usuarioP = new UsuarioP();
+$usuarioP->introducirResultado("victoria");
+echo "<p>" . $usuarioP->imprimirInfo() . "</p>";
 
+$usuarioP->introducirResultado("victoria");
+echo "<p>" . $usuarioP->imprimirInfo() . "</p>";
+
+$usuarioP->introducirResultado("victoria");
+echo "<p>" . $usuarioP->imprimirInfo() . "</p>";
+
+//USUARIO ADMINISTRADOR
 $usuarioA = new UsuarioA("Socram", "Martin", "FOOTBALL");
-/*$usuarioA->setNombre();
-$usuarioA->setApellido();
-$usuarioA->setDeporte();*/
 
 $usuarioA->crearPartido();
 
@@ -43,7 +49,6 @@ echo "<p>" . $usuarioA->imprimirInfo() . "</p>";
 
 $usuarioA->introducirResultado("victoria");
 echo "<p>" . $usuarioA->imprimirInfo() . "</p>";
-
 ?>
 
 <!DOCTYPE html>

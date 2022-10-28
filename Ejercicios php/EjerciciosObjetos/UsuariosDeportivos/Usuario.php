@@ -1,5 +1,5 @@
 <?php
-define("SUBIDA", 6);
+//define("SUBIDA", 6);
 class Usuario{
 
     private $nombre;
@@ -7,13 +7,13 @@ class Usuario{
     private $deporte;
     private $nivel = 0;
     private $puntos = 0;
-    protected $seis; 
+    private $seis; 
 
-    public function __construct(string $nombre, string $apellido, string $deporte){
+    public function __construct(string $nombre, string $apellido, string $deporte, int $seis = 6){
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->deporte = $deporte;
-        $this->seis = SUBIDA;
+        $this->seis = $seis;
     }
     
     function introducirResultado($resultado){
