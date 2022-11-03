@@ -41,8 +41,9 @@ if(isset($_POST['enviar'])){
     }
 
     if(count($errores) == 0){
-
-        //exit();
+        file_put_contents("temas.csv", "$tema;$hora;$minuto\n", FILE_APPEND);
+        header("Location: Listado.php");
+        exit();
     }
 }
 ?>
