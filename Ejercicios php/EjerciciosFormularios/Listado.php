@@ -40,5 +40,6 @@ print_r($lines);
             ?>
         </tbody>
     </table>
+    <a href="Formulario1.php">Añade otro</a>
 </body>
 </html>
