@@ -1,27 +1,34 @@
 <?php
+//date("h") muestra la hora del sistema y el date("i") los minutos
 $tema = "";
 $hora = date("h");
 $minuto = date("i");
 
-$opcionesMinuto = [0,15,20,45,];
+//introducimos en un array los valores del select
+$opcionesMinuto = [0,15,20,45];
 
+//buscamos los minutos mayores al actual y los mete un un array EJEMPLO: son y 10 el minuto mas cercano es y 15
 $mayor = array_filter($opcionesMinuto,function($m){
     global $minuto;
     return $m > $minuto;
 });
 
+//si el array esta vacio significa q la siguiente opcion disponible es la siguiente hora por lo que ponemos los minutos a 0 y sumamos 1 a la hora actual
 if(empty($mayor)){
     $minuto = 0;
     $hora++;
 }else{
-    //array_shift muestra el primero del array
+    //array_shift muestra el primero del array para colocarlo en minuto debido a que es el mas proximo
     $minuto = array_shift($mayor);
 }
 
+//creamos array errores
 $errores = [];
 
+//comprobamos is nos envian el formulario
 if(isset($_POST['enviar'])){
     
+    //si se ha introducido el tema y no es un espacio en blanco si no se cumple se introduce un error en el array de errores con el valor tema
     if(isset($_POST['tema']) && $_POST['tema'] != ""){
         $tema = $_POST['tema'];
     }else{
@@ -40,8 +47,11 @@ if(isset($_POST['enviar'])){
         $errores['minuto'] = 'No puede estar vacio';
     }
 
+    //si no tenemos ningun error añadimos la informacion a un fichero csv
     if(count($errores) == 0){
+        //colocamos el nombre del fichero, los datos a introducir y file_append para añadir el contenido al fichero
         file_put_contents("temas.csv", "$tema;$hora;$minuto\n", FILE_APPEND);
+        //le pasamos el fichero php donde queremos que lo pinte al darle a enviar
         header("Location: Listado.php");
         exit();
     }
