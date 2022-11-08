@@ -6,9 +6,10 @@ class Numero{
 
     function comprobar($numero){
         if(!empty($numero)){
-            return $this->numero = $numero;
+            $this->numero = $numero;
+            return true;
         }else{
-            return "error";
+            return false;
         }
     }
 }

@@ -7,8 +7,9 @@ class Texto{
     function comprobar($cadena){
         if(!empty($cadena) && $cadena != " "){
             return $this->cadena = $cadena;
+            return true;
         }else{
-            return "Error en el aparatado";
+            return false;
         }
     }
 }

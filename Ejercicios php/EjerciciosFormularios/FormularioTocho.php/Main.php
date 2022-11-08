@@ -9,11 +9,26 @@ require('Texto.php');
 $select = new Select();
 $check = new Check();
 $radio = new Radio();
+$numero = new Numero();
+$texto = new Texto();
+$textA = new Texto();
 
 $arrayError = [];
 print_r($_POST);
 
 if(isset($_POST['enviar'])){
+
+    if($texto->comprobar($_POST['nombre']) && $texto->comprobar($_POST['apellido'])){
+        array_push($arrayError, ["texto"=>" "]);
+    }else{
+        $arrayError += ["texto"=>"Error en Nombre o Apellido"];
+    }
+
+    if($numero->comprobar($_POST['edad'])){
+        array_push($arrayError, ["numero"=>" "]);
+    }else{
+        $arrayError += ["numero"=>"Error en edad"];
+    }
 
     if($radio->comprobar($_POST)){
         $radio->setSexo($_POST['sexo']);
@@ -34,6 +49,12 @@ if(isset($_POST['enviar'])){
     }else{
         $arrayError += ["select"=>"Error en select"];
     };
+
+    if($textA->comprobar($_POST['textA'])){
+        array_push($arrayError, ["textA"=>" "]);
+    }else{
+        $arrayError += ["textA"=>"Error en textArea"];
+    };
 }
 print_r($arrayError);
 
@@ -52,13 +73,17 @@ print_r($arrayError);
         <fieldset><legend>DATOS PERSONALES</legend>
             <label for ="nombre">NOMBRE: </label>
             <input type="text"  name="nombre" id="nombre" value="" placeholder="NOMBRE">
-
             <label for ="apellidos">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;APELLIDOS: </label>
-            <input type="text"  name="apellidos" id="apellidos" value="" placeholder="APELLIDOS"><br><br>
+            <input type="text"  name="apellidos" id="apellidos" value="" placeholder="APELLIDOS"><br>
+            <?php
+                   echo $arrayError["texto"];
+            ?><br><br>
 
             <label for ="edad">EDAD: </label>
-            <input type="number" size="1" max="99" min="18" name="edad" value="" id="edad"><br><br>
-
+            <input type="number" size="1" max="99" min="18" name="edad" value="" id="edad"><br>
+            <?php
+                   echo $arrayError["numero"];
+            ?><br><br>
 
             <b>SEXO: </b> <br>
             HOMBRE<input type="radio" name="sexo" value="" id="Hombre">
@@ -80,8 +105,10 @@ print_r($arrayError);
                 echo $arrayError["check"];
             ?>
 
-            <br><textarea placeholder="Escribe sobre el hobbie/s seleccionados u otro que te guste" rows="5" cols="50"></textarea>
-            
+            <br><textarea placeholder="Escribe sobre el hobbie/s seleccionados u otro que te guste" rows="5" cols="50" name="textA"></textarea>
+            <?php
+                   echo $arrayError["textA"];
+            ?><br><br>
         </fieldset>
         <input type="submit" value="enviar" name="enviar"/>
     </form>
