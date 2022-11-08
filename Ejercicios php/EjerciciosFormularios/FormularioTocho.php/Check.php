@@ -3,24 +3,27 @@
 class Check{
 
     private $array =[];
-    private $checked = "";
 
     function crear($array){
         array_walk(
             $array,
             function($op, $k){
-                echo "$op<input type='checkbox' value='$k' name='$op'/>&nbsp;";
+                echo "$op<input type='checkbox' value='$k' name='hobbies[]'/>&nbsp;";
             }
         );
     }
 
-    function comprobar(){
-        for ($i=0; $i < count($this->array); $i++) { 
-            if($checked == $i){
-                $this->checked = $checked;
-            }else{
-                return "error";
-            }
+    function comprobar($array){
+        if(array_key_exists('hobbies',$array)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function setHobbies($array){
+        foreach($array as $var){
+            array_push($this->array, $var);
         }
     }
 }

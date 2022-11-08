@@ -2,14 +2,18 @@
 
 class Radio{
 
-    private $radio = "";
+    private $sexo = "";
 
-    function comprobar($radio){
-        if($radio != ""){
-            return $this->radio = $radio;
+    function comprobar($array){
+        if(array_key_exists('sexo',$array)){
+            return true;
         }else{
-            return "ERROR";
+            return false;
         }
+    }
+
+    function setSexo($sexo){
+        $this->sexo = $sexo;
     }
 }
 ?>

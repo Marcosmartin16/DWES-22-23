@@ -15,10 +15,11 @@ class Select{
     }
 
     function comprobar($seleccionado){
-        if($seleccionado != ""){
-            return $this->seleccionado = $seleccionado;
+        if($seleccionado != " "){
+            $this->seleccionado = $seleccionado;
+            return true;
         }else{
-            return "ERROR";
+            return false;
         }
     }
 }
