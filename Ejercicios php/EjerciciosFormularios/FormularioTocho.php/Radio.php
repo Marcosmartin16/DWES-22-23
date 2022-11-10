@@ -12,9 +12,5 @@ class Radio extends Abstracta{
             return false;
         }
     }
-
-    /*function setSexo($sexo){
-        $this->sexo = $sexo;
-    }*/
 }
 ?>

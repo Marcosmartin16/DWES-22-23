@@ -112,7 +112,15 @@ echo $textA->getX();
 
             <b>SELECCIONE PROVINCIA:</b><br>
             <select name="provincias" id="provincias">
-                <?php $select->crear([" ","MADRID","BARCELONA","VALENCIA","MURCIA","SEVILLA"]);?><br>
+                <?php 
+                if($select->getX() != " "){
+                  echo "<option></option>";
+                }else{
+                    $select->crear([" ","MADRID","BARCELONA","VALENCIA","MURCIA","SEVILLA"]);
+                    echo "<br>";
+                }
+                ?>
+                
             </select>
             <?php echo $arrayError["select"];?>
         </fieldset>

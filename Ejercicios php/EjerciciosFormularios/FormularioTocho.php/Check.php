@@ -21,10 +21,5 @@ class Check extends Abstracta{
             return false;
         }
     }
-
-    //incluida en clase abstracta
-    /*function setHobbies($array){
-        $this->array=$array;
-    }*/
 }
 ?>

@@ -23,10 +23,25 @@ class Select extends Abstracta{
         }
     }
 
-    function seleccionado($opcion){
-        if($op == $eSeleccionado){
-
+    /*function seleccionado($op){
+        if($op == $this->seleccionado){
+            echo 'selected';
+        }else{
+            echo '';
         }
+    }*/
+
+    function vCrear($array, $otro){
+        array_walk(
+            $array,
+            function($op, $k){
+                if($op != $otro){
+                    echo "<option value='$op' >$op</option>";
+                }else{
+                    echo "<option value='$op' selected>$op</option>";
+                }
+            }
+        ,$otro);
     }
 }
 ?>
