@@ -1,5 +1,5 @@
 <?php
-
+//cambiar por autoload
 require('Select.php');
 require('Check.php');
 require('Radio.php');
@@ -10,54 +10,70 @@ $select = new Select();
 $check = new Check();
 $radio = new Radio();
 $numero = new Numero();
-$texto = new Texto();
+$textoN = new Texto();
+$textoAp = new Texto();
 $textA = new Texto();
 
 $arrayError = [];
-print_r($_POST);
+
+/*function cleanData($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}*/
 
 if(isset($_POST['enviar'])){
 
-    if($texto->comprobar($_POST['nombre']) && $texto->comprobar($_POST['apellido'])){
+    if($textoN->comprobar($_POST['nombre']) && $textoAp->comprobar($_POST['apellidos'])){
+        $textoN->setX($_POST['nombre']);
+        $textoAp->setX($_POST['apellidos']);
+
         array_push($arrayError, ["texto"=>" "]);
     }else{
         $arrayError += ["texto"=>"Error en Nombre o Apellido"];
     }
 
     if($numero->comprobar($_POST['edad'])){
+        $numero->setX($_POST['edad']);
         array_push($arrayError, ["numero"=>" "]);
     }else{
         $arrayError += ["numero"=>"Error en edad"];
     }
 
     if($radio->comprobar($_POST)){
-        $radio->setSexo($_POST['sexo']);
+        $radio->setX($_POST['sexo']);
         array_push($arrayError, ["radio"=>" "]);
     }else{
         $arrayError += ["radio"=>"Error en radio"];
     }
 
     if($check->comprobar($_POST)){
-        $check->setHobbies($_POST['hobbies']);
+        $check->setX($_POST['hobbies']);
         array_push($arrayError, ["check"=>" "]);
     }else{
         $arrayError += ["check"=>"Error en check"];
     };
 
     if($select->comprobar($_POST['provincias'])){
+        $select->setX($_POST['provincias']);
         array_push($arrayError, ["select"=>" "]);
     }else{
         $arrayError += ["select"=>"Error en select"];
     };
 
     if($textA->comprobar($_POST['textA'])){
+        $textA->setX($_POST['textA']);
         array_push($arrayError, ["textA"=>" "]);
     }else{
         $arrayError += ["textA"=>"Error en textArea"];
     };
-}
-print_r($arrayError);
 
+    //ENVIAR DATOS A OTRA VENTANA O CREAR PDF
+    //llamar a funcion cleanData
+}
+print_r($_POST);
+echo $textA->getX();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,23 +88,23 @@ print_r($arrayError);
     <form action="" method="post">
         <fieldset><legend>DATOS PERSONALES</legend>
             <label for ="nombre">NOMBRE: </label>
-            <input type="text"  name="nombre" id="nombre" value="" placeholder="NOMBRE">
+            <input type="text"  name="nombre" id="nombre" value="<?php echo $textoN->getX()?>" placeholder="NOMBRE">
             <label for ="apellidos">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;APELLIDOS: </label>
-            <input type="text"  name="apellidos" id="apellidos" value="" placeholder="APELLIDOS"><br>
+            <input type="text"  name="apellidos" id="apellidos" value="<?php echo $textoAp->getX()?>" placeholder="APELLIDOS"><br>
             <?php
                    echo $arrayError["texto"];
             ?><br><br>
 
             <label for ="edad">EDAD: </label>
-            <input type="number" size="1" max="99" min="18" name="edad" value="" id="edad"><br>
+            <input type="number" size="1" max="99" min="18" name="edad" value="<?php echo $numero->getX()?>" id="edad"><br>
             <?php
                    echo $arrayError["numero"];
             ?><br><br>
 
             <b>SEXO: </b> <br>
-            HOMBRE<input type="radio" name="sexo" value="" id="Hombre">
-            MUJER<input type="radio" name="sexo" value="" id="Mujer">
-            OTRO<input type="radio" name="sexo" value="" id="Otro">
+            HOMBRE<input type="radio" name="sexo" value="hombre" id="Hombre">
+            MUJER<input type="radio" name="sexo" value="mujer" id="Mujer">
+            OTRO<input type="radio" name="sexo" value="otro" id="Otro">
                 <?php
                    echo $arrayError["radio"];
                 ?>
@@ -105,7 +121,7 @@ print_r($arrayError);
                 echo $arrayError["check"];
             ?>
 
-            <br><textarea placeholder="Escribe sobre el hobbie/s seleccionados u otro que te guste" rows="5" cols="50" name="textA"></textarea>
+            <br><textarea placeholder="Escribe sobre el hobbie/s seleccionados u otro que te guste" rows="5" cols="50" name="textA" value=""><?php echo $textA->getX()?></textarea>
             <?php
                    echo $arrayError["textA"];
             ?><br><br>

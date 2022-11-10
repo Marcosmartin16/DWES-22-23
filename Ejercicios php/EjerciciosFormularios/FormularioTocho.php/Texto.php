@@ -1,12 +1,12 @@
 <?php
+require_once('Abstracta.php');
 
-class Texto{
+class Texto extends Abstracta{
 
     private $cadena = "";
 
     function comprobar($cadena){
         if(!empty($cadena) && $cadena != " "){
-            return $this->cadena = $cadena;
             return true;
         }else{
             return false;

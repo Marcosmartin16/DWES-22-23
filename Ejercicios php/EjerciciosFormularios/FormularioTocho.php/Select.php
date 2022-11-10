@@ -1,6 +1,7 @@
 <?php
+require_once('Abstracta.php');
 
-class Select{
+class Select extends Abstracta{
 
     private $array = [];
     private $seleccionado;
@@ -16,10 +17,15 @@ class Select{
 
     function comprobar($seleccionado){
         if($seleccionado != " "){
-            $this->seleccionado = $seleccionado;
             return true;
         }else{
             return false;
+        }
+    }
+
+    function seleccionado($opcion){
+        if($op == $eSeleccionado){
+
         }
     }
 }

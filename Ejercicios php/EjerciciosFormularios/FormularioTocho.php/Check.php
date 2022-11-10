@@ -1,6 +1,7 @@
 <?php
+require_once('Abstracta.php');
 
-class Check{
+class Check extends Abstracta{
 
     private $array =[];
 
@@ -8,23 +9,22 @@ class Check{
         array_walk(
             $array,
             function($op, $k){
-                echo "$op<input type='checkbox' value='$k' name='hobbies[]'/>&nbsp;";
+                echo "$op<input type='checkbox' value='$op' name='check[]'/>&nbsp;";
             }
         );
     }
 
     function comprobar($array){
-        if(array_key_exists('hobbies',$array)){
+        if(array_key_exists('check',$array)){
             return true;
         }else{
             return false;
         }
     }
 
-    function setHobbies($array){
-        foreach($array as $var){
-            array_push($this->array, $var);
-        }
-    }
+    //incluida en clase abstracta
+    /*function setHobbies($array){
+        $this->array=$array;
+    }*/
 }
 ?>

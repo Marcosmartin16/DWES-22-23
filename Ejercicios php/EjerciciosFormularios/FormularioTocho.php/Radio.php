@@ -1,6 +1,7 @@
 <?php
+require_once('Abstracta.php');
 
-class Radio{
+class Radio extends Abstracta{
 
     private $sexo = "";
 
@@ -12,8 +13,8 @@ class Radio{
         }
     }
 
-    function setSexo($sexo){
+    /*function setSexo($sexo){
         $this->sexo = $sexo;
-    }
+    }*/
 }
 ?>
