@@ -18,6 +18,7 @@ $arrayError = [];
 $arraySelect = [" ","MADRID","BARCELONA","VALENCIA","MURCIA","SEVILLA"];
 $arrayCheck = ["DEPORTES","LECTURA","VIDEOJUEGOS","CINE"];
 $arrayRadio = ['HOMBRE','MUJER','OTRO'];
+$labelNumber = "Edad";
 
 /*function cleanData($data) {
     $data = trim($data);
@@ -37,8 +38,8 @@ if(isset($_POST['enviar'])){
         $arrayError += ["texto"=>"Error en Nombre o Apellido"];
     }
 
-    if($numero->comprobar($_POST['edad'])){
-        $numero->setX($_POST['edad']);
+    if($numero->comprobar($_POST[$labelNumber])){
+        $numero->setX($_POST[$labelNumber]);
         array_push($arrayError, ["numero"=>" "]);
     }else{
         $arrayError += ["numero"=>"Error en edad"];
@@ -107,12 +108,12 @@ print_r($_POST);
             <?php
                    echo $arrayError["texto"];
             ?><br><br>
-
-            <label for ="edad">EDAD: </label>
-            <input type="number" size="1" max="99" min="18" name="edad" value="<?php echo $numero->getX()?>" id="edad"><br>
+            
             <?php
-                   echo $arrayError["numero"];
-            ?><br><br>
+                $numero->crear($labelNumber,99,18,$numero->getX());
+                echo $arrayError["numero"];
+            ?>
+            <br><br>
 
             <b>SEXO: </b> <br>
             
