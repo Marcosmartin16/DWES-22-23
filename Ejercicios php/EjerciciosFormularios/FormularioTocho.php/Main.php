@@ -19,6 +19,8 @@ $arraySelect = [" ","MADRID","BARCELONA","VALENCIA","MURCIA","SEVILLA"];
 $arrayCheck = ["DEPORTES","LECTURA","VIDEOJUEGOS","CINE"];
 $arrayRadio = ['HOMBRE','MUJER','OTRO'];
 $labelNumber = "Edad";
+$labelNombre = "Nombre";
+$labelApellido = "Apellido";
 
 /*function cleanData($data) {
     $data = trim($data);
@@ -29,9 +31,9 @@ $labelNumber = "Edad";
 
 if(isset($_POST['enviar'])){
 
-    if($textoN->comprobar($_POST['nombre']) && $textoAp->comprobar($_POST['apellidos'])){
-        $textoN->setX($_POST['nombre']);
-        $textoAp->setX($_POST['apellidos']);
+    if($textoN->comprobar($_POST[$labelNombre]) && $textoAp->comprobar($_POST[$labelApellido])){
+        $textoN->setX($_POST[$labelNombre]);
+        $textoAp->setX($_POST[$labelApellido]);
 
         array_push($arrayError, ["texto"=>" "]);
     }else{
@@ -101,10 +103,11 @@ print_r($_POST);
     <h1>DATOS PERSONALES</h1>
     <form action="" method="post">
         <fieldset><legend>DATOS PERSONALES</legend>
-            <label for ="nombre">NOMBRE: </label>
-            <input type="text"  name="nombre" id="nombre" value="<?php echo $textoN->getX()?>" placeholder="NOMBRE">
-            <label for ="apellidos">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;APELLIDOS: </label>
-            <input type="text"  name="apellidos" id="apellidos" value="<?php echo $textoAp->getX()?>" placeholder="APELLIDOS"><br>
+            <!-- <input type="text"  name="nombre" id="nombre" value="<?php echo $textoN->getX()?>" placeholder="NOMBRE"> -->
+            <?php $textoN->crear($labelNombre,20,4,$textoN->getX())?><br>
+            <?php $textoAp->crear($labelApellido,20,4,$textoAp->getX())?>
+
+            <!-- <input type="text"  name="apellidos" id="apellidos" value="<?php echo $textoAp->getX()?>" placeholder="APELLIDOS"><br> -->
             <?php
                    echo $arrayError["texto"];
             ?><br><br>
