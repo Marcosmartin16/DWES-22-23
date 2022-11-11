@@ -5,15 +5,6 @@ class Radio extends Abstracta{
 
     private $sexo = "";
 
-    function crear($array){
-        array_walk(
-            $array,
-            function($op, $k){
-                echo "$op<input type='radio' name='sexo' value='$op' id='$op'/>&nbsp;";
-            }
-        );
-    }
-
     function comprobar($array){
         if(array_key_exists('sexo',$array)){
             return true;
@@ -22,7 +13,7 @@ class Radio extends Abstracta{
         }
     }
 
-    function v2Crear($array,$stringEnviado){
+    function crear($array,$stringEnviado){
         
         array_walk(
             $array,

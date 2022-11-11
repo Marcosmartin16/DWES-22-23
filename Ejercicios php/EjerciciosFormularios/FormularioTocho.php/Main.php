@@ -117,12 +117,8 @@ print_r($_POST);
             <b>SEXO: </b> <br>
             
                 <?php
-                    if(isset($_POST['enviar'])){
-                        $radio->v2Crear($arrayRadio, $radio->getX());
-                    }else{
-                        $radio->crear($arrayRadio);
-                    }
-                   echo $arrayError["radio"];
+                    $radio->crear($arrayRadio, $radio->getX());
+                    echo $arrayError["radio"];
                 ?>
             <br><br>
 
@@ -137,11 +133,7 @@ print_r($_POST);
         </fieldset>
         <fieldset><legend>HOBBIES</legend>
             <?php
-                if(isset($_POST['enviar']) && $arrayError["check"] == " "){
-                    $check->vCrear($arrayCheck,$check->getX());
-                }else{
-                    $check->crear($arrayCheck);
-                }
+                $check->crear($arrayCheck,$check->getX());
                 echo $arrayError["check"];
             ?>
 

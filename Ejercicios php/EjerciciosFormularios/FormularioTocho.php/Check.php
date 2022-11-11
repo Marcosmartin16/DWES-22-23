@@ -5,15 +5,6 @@ class Check extends Abstracta{
 
     private $array =[];
 
-    function crear($array){
-        array_walk(
-            $array,
-            function($op, $k){
-                echo "$op<input type='checkbox' value='$op' name='check[]' />&nbsp;";
-            }
-        );
-    }
-
     function comprobar($array){
         if(array_key_exists('check',$array)){
             return true;
@@ -22,18 +13,26 @@ class Check extends Abstracta{
         }
     }
 
-    function vCrear($array,$arrayEnviado){
-        
-        array_walk(
-            $array,
-            function($op, $k, $data){
-                
-                if(in_array($op, $data)){
-                    echo "$op<input type='checkbox' value='$op' name='check[]' checked/>&nbsp;";
-                }else{
-                    echo "$op<input type='checkbox' value='$op' name='check[]'/>&nbsp;";
+    function crear($array,$arrayEnviado){
+        if(empty($arrayEnviado)){
+            array_walk(
+                $array,
+                function($op, $k){
+                    echo "$op<input type='checkbox' value='$op' name='check[]' />&nbsp;";
                 }
-            },$arrayEnviado);
+            );
+        }else{
+            array_walk(
+                $array,
+                function($op, $k, $data){
+                    
+                    if(in_array($op, $data)){
+                        echo "$op<input type='checkbox' value='$op' name='check[]' checked/>&nbsp;";
+                    }else{
+                        echo "$op<input type='checkbox' value='$op' name='check[]'/>&nbsp;";
+                    }
+                },$arrayEnviado);
+        }
     }
 }
 ?>
