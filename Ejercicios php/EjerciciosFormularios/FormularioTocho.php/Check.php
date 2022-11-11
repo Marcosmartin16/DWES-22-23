@@ -9,7 +9,7 @@ class Check extends Abstracta{
         array_walk(
             $array,
             function($op, $k){
-                echo "$op<input type='checkbox' value='$op' name='check[]'/>&nbsp;";
+                echo "$op<input type='checkbox' value='$op' name='check[]' />&nbsp;";
             }
         );
     }
@@ -20,6 +20,20 @@ class Check extends Abstracta{
         }else{
             return false;
         }
+    }
+
+    function vCrear($array,$arrayEnviado){
+        
+        array_walk(
+            $array,
+            function($op, $k, $data){
+                
+                if(in_array($op, $data)){
+                    echo "$op<input type='checkbox' value='$op' name='check[]' checked/>&nbsp;";
+                }else{
+                    echo "$op<input type='checkbox' value='$op' name='check[]'/>&nbsp;";
+                }
+            },$arrayEnviado);
     }
 }
 ?>

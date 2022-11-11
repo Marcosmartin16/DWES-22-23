@@ -15,6 +15,9 @@ $textoAp = new Texto();
 $textA = new Texto();
 
 $arrayError = [];
+$arraySelect = [" ","MADRID","BARCELONA","VALENCIA","MURCIA","SEVILLA"];
+$arrayCheck = ["DEPORTES","LECTURA","VIDEOJUEGOS","CINE"];
+$arrayRadio = ['HOMBRE','MUJER','OTRO'];
 
 /*function cleanData($data) {
     $data = trim($data);
@@ -49,8 +52,9 @@ if(isset($_POST['enviar'])){
     }
 
     if($check->comprobar($_POST)){
-        $check->setX($_POST['hobbies']);
+        $check->setX($_POST['check']);
         array_push($arrayError, ["check"=>" "]);
+        
     }else{
         $arrayError += ["check"=>"Error en check"];
     };
@@ -58,6 +62,14 @@ if(isset($_POST['enviar'])){
     if($select->comprobar($_POST['provincias'])){
         $select->setX($_POST['provincias']);
         array_push($arrayError, ["select"=>" "]);
+
+        $valor = $select->getX();
+        array_shift($arraySelect);
+        $posicion = array_search($valor, $arraySelect);
+        unset($arraySelect[$posicion]);
+        array_unshift($arraySelect,$valor);
+        print_r($arraySelect);
+
     }else{
         $arrayError += ["select"=>"Error en select"];
     };
@@ -69,11 +81,12 @@ if(isset($_POST['enviar'])){
         $arrayError += ["textA"=>"Error en textArea"];
     };
 
+    
+
     //ENVIAR DATOS A OTRA VENTANA O CREAR PDF
     //llamar a funcion cleanData
 }
 print_r($_POST);
-echo $textA->getX();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,10 +115,13 @@ echo $textA->getX();
             ?><br><br>
 
             <b>SEXO: </b> <br>
-            HOMBRE<input type="radio" name="sexo" value="hombre" id="Hombre">
-            MUJER<input type="radio" name="sexo" value="mujer" id="Mujer">
-            OTRO<input type="radio" name="sexo" value="otro" id="Otro">
+            
                 <?php
+                    if(isset($_POST['enviar'])){
+                        $radio->v2Crear($arrayRadio, $radio->getX());
+                    }else{
+                        $radio->crear($arrayRadio);
+                    }
                    echo $arrayError["radio"];
                 ?>
             <br><br>
@@ -113,19 +129,19 @@ echo $textA->getX();
             <b>SELECCIONE PROVINCIA:</b><br>
             <select name="provincias" id="provincias">
                 <?php 
-                if($select->getX() != " "){
-                  echo "<option></option>";
-                }else{
-                    $select->crear([" ","MADRID","BARCELONA","VALENCIA","MURCIA","SEVILLA"]);
-                    echo "<br>";
-                }
+                    $select->crear($arraySelect);                    
                 ?>
                 
             </select>
             <?php echo $arrayError["select"];?>
         </fieldset>
         <fieldset><legend>HOBBIES</legend>
-            <?php $check->crear(["DEPORTES","LECTURA","VIDEOJUEGOS","CINE"]);
+            <?php
+                if(isset($_POST['enviar']) && $arrayError["check"] == " "){
+                    $check->vCrear($arrayCheck,$check->getX());
+                }else{
+                    $check->crear($arrayCheck);
+                }
                 echo $arrayError["check"];
             ?>
 
