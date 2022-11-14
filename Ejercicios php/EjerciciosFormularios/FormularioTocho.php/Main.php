@@ -103,28 +103,21 @@ print_r($_POST);
     <h1>DATOS PERSONALES</h1>
     <form action="" method="post">
         <fieldset><legend>DATOS PERSONALES</legend>
-            <!-- <input type="text"  name="nombre" id="nombre" value="<?php echo $textoN->getX()?>" placeholder="NOMBRE"> -->
-            <?php $textoN->crear($labelNombre,20,4,$textoN->getX())?><br>
-            <?php $textoAp->crear($labelApellido,20,4,$textoAp->getX())?>
-
-            <!-- <input type="text"  name="apellidos" id="apellidos" value="<?php echo $textoAp->getX()?>" placeholder="APELLIDOS"><br> -->
-            <?php
-                   echo $arrayError["texto"];
-            ?><br><br>
+            <?php 
+                $textoN->crear($labelNombre,20,4,$textoN->getX());
+                    echo "<br>";
+                $textoAp->crear($labelApellido,20,4,$textoAp->getX());
+                    echo $arrayError["texto"] . "<br><br>";
             
-            <?php
                 $numero->crear($labelNumber,99,18,$numero->getX());
-                echo $arrayError["numero"];
+                echo $arrayError["numero"] . "<br><br>";
             ?>
-            <br><br>
-
             <b>SEXO: </b> <br>
             
                 <?php
                     $radio->crear($arrayRadio, $radio->getX());
-                    echo $arrayError["radio"];
+                    echo $arrayError["radio"] . "<br><br>";
                 ?>
-            <br><br>
 
             <b>SELECCIONE PROVINCIA:</b><br>
             <select name="provincias" id="provincias">
