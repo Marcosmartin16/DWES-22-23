@@ -26,4 +26,6 @@ if($numero == 3){
     $banco3->compruebaSeguridad();
     echo $banco3->pagar("qwerty", 20);
 }
+
+echo $numero;
 ?>

@@ -1,8 +1,8 @@
 <?php
+namespace Completito;
+require_once('Personaje.php');
 
-//require_once('Personaje.php');
-
-abstract class Mago{
+abstract class Mago implements Personaje{
 
     function defender(){
         echo "MAGO: !HECHIZO PROTECTOR¡ <br>";

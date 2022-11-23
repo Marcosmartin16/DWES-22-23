@@ -1,5 +1,5 @@
 <?php
-abstract class Abstracta{
+abstract class Validar{
     public function setX($valor){
         $this->valor=$valor;
     }
@@ -8,7 +8,8 @@ abstract class Abstracta{
         return $this->valor;
     }
 
-    abstract function comprobar($valor);
+    abstract function comprobar($valor,$valor2);
+    abstract function error();
 }
 
 ?>

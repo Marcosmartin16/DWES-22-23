@@ -1,4 +1,5 @@
 <?php
+namespace Completito;
 
 interface Personaje{
     function atacar();

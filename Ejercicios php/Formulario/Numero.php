@@ -3,6 +3,7 @@ require_once('Validar.php');
 
 class Numero extends Validar{
 
+    //nombre de input
     private $nombre;
 
     function crear($dato,$max,$min,$valor){

@@ -3,13 +3,15 @@
 class Circulo{
 
     private $radio;
-    private const pi = M_PI;
+    private const PI = M_PI;
 
-    function setRadio($radio){
+    //le paso un float
+    function setRadio(float $radio){
         $this->radio = $radio;
     }
 
-    function getRadio(){
+    //devuelve un float
+    function getRadio():float{
         return $this->radio;
     }
 
@@ -17,8 +19,4 @@ class Circulo{
         echo (($this->radio * $this->radio) * M_PI);
     }
 }
-
-$c = new Circulo();
-$c->setRadio(2);
-$c->getArea();
 ?>

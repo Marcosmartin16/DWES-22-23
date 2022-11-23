@@ -1,6 +1,5 @@
 <?php
-
-
+namespace Completito;
 require_once('Personaje.php');
 
 class Humano implements Personaje{

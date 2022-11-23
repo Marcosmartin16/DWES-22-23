@@ -1,29 +1,35 @@
 <?php
-require_once('Abstracta.php');
+require_once('Validar.php');
 
-class Numero extends Abstracta
+class Numero extends Validar
 {
 
-    private $numero;
+    private $nombre;
 
     function crear($dato,$max,$min,$valor){
-        echo "$dato <input type='number' size='1' max='$max' min='$min' name='$dato' value='$valor' id='$dato'><br>";
+        $this->nombre=$dato;
+        if(empty($valor)){
+            echo "$dato <input type='number' size='1' max='$max' min='$min' name='$dato' value='' id='$dato'><br>";
+        }else{
+            if($this->comprobar($valor,$dato)){
+                echo "$dato <input type='number' size='1' max='$max' min='$min' name='$dato' value='".$valor[$dato]."' id='$dato'><br>";
+            }else{
+                echo "$dato <input type='number' size='1' max='$max' min='$min' name='$dato' value='' id='$dato'><br>";
+                echo $this->error();
+            }
+        }
     }
 
-    function comprobar($numero){
-        if(!empty($numero)){
+    function comprobar($array,$numero){
+        if(array_key_exists($numero,$array) && !empty($array[$numero])){
             return true;
         }else{
             return false;
         }
     }
 
-    /*public function setX($valor){
-        $this->valor=$valor;
+    function error(){
+        return "<p>Error deben introducir $this->nombre </p><br>";
     }
-
-    public function getX(){
-        return $this->valor;
-    }*/
 }
 ?>

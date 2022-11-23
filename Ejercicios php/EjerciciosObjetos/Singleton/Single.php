@@ -26,5 +26,7 @@ class Single{
 }
 
 $single = Single::singleton();
+$single2 = Single::singleton();
+
 $single->setNombre("Marcos");
 ?>
