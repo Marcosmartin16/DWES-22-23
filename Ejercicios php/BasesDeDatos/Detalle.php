@@ -1,17 +1,18 @@
 <?php
-
 try {
     $mbd = new PDO('mysql:host=localhost;dbname=examen', "examen", "examen");
 
     // Utilizar la conexión aquí
-    $resultado = $mbd->query('SELECT id,nombre,num_trofeos  FROM Ciclistas');
+    $resultado = $mbd->query('SELECT nombre,num_trofeos FROM Ciclistas WHERE id = ":idCiclista"');
+
+    $resultado->bindParam(':idCiclista', $_GET["id"]);
 
     $resultado->setFetchMode(PDO::FETCH_ASSOC);
 
     $resultado->execute();
 
     while($row = $resultado->fetch()){
-      echo "<a href='Detalle.php?id=" . $row['id'] . "'>" . $row['nombre'] . "</a> " . $row['num_trofeos']. "<br>";
+      echo $row["nombre"] . " " . $row["num_trofeos"]. "<br>";
     }
 
     // Ya se ha terminado; se cierra
@@ -33,6 +34,6 @@ try {
     <title>Document</title>
 </head>
 <body>
-    
+
 </body>
 </html>

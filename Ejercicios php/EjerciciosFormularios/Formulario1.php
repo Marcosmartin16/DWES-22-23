@@ -55,6 +55,7 @@ if(isset($_POST['enviar'])){
         header("Location: Listado.php");
         exit();
     }
+
 }
 ?>
 <!DOCTYPE html>
