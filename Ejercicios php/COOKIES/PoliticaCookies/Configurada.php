@@ -1,13 +1,13 @@
 <?php
 
-if(isset($_COOKIE['galleta'])){
-    
-    echo "<h1>Hola disfruta de tu galleta</h1>
-            <a href='index.php'>volver</a>";
-}else{
-    header("Location: index.php");
-    die();
-}
+    if(isset($_COOKIE['galleta'])){
+        
+        echo "<h1>Hola disfruta de tu galleta</h1>
+                <a href='index.php'>volver</a>";
+    }else{
+        header("Location: index.php");
+        die();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

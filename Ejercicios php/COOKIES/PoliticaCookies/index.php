@@ -1,31 +1,32 @@
 <?php
 
-echo "<h1>BIENVENIDO</h1>";
+//no hace falta escribirlo con echos si no lo puedes hacer con booleanos y cambiarlo segun convenga
 
-if(isset($_COOKIE['galleta'])){
-    
-    echo "<a href='Configurada.php'>entrar</a><br><br>";
-}else{
-    echo "
-         <p>ACEPTAS LAS COOKIES?</p>
-         <form method='post'>
-            <input type='submit' value='aceptar' name='aceptar'/>
-            <input type='submit' value='denegar' name='denegar'/>
-         </form>";
-}
+    echo "<h1>BIENVENIDO</h1>";
 
-if(isset($_POST['aceptar'])){
+    if(isset($_COOKIE['galleta'])){
+        
+        echo "<a href='Configurada.php'>entrar</a><br><br>";
+    }else{
+        echo "
+            <p>ACEPTAS LAS COOKIES?</p>
+            <form method='post'>
+                <input type='submit' value='aceptar' name='aceptar'/>
+                <input type='submit' value='denegar' name='denegar'/>
+            </form>";
+    }
 
-    setcookie("galleta","aceptada");
-    header("Location: Configurada.php");
-    die();
-}
+    if(isset($_POST['aceptar'])){
 
-if(isset($_POST['denegar'])){
+        setcookie("galleta","aceptada");
+        header("Location: Configurada.php");
+        die();
+    }
 
-    echo "<p>Debes aceptar las cookies porque si no las aceptas no las has aceptado y no las aceptaste sabes entonces debes darle a aceptar las cookies</p>";
-}
+    if(isset($_POST['denegar'])){
 
+        echo "<p>Debes aceptar las cookies porque si no las aceptas no las has aceptado y no las aceptaste sabes entonces debes darle a aceptar las cookies</p>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
