@@ -1,6 +1,6 @@
 <?php
 
-//no hace falta escribirlo con echos si no lo puedes hacer con booleanos y cambiarlo segun convenga
+//no hace falta escribirlo con echos si no que lo puedes hacer con booleanos y cambiarlo segun convenga
 
     echo "<h1>BIENVENIDO</h1>";
 

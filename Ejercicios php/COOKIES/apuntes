@@ -1,0 +1,25 @@
+tabla usuarios con id nombre email contraseña-hash
+tabla token con id user espira en 1 hora
+
+index.php->muestra pagina despues de iniciar sesion
+fromulario.php->crea usuario y contraseña ademas de validar al inicar sesion
+recuperar.php->usuario da email para recibir correo con token
+te envian un correo con un boton que te lleva a la pagina de cambiar contraseña con el token
+
+
+------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
