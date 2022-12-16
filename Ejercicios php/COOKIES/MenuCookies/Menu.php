@@ -2,16 +2,16 @@
     function pintar($galleta){
         if(isset($galleta['name'])){
             echo "<div id='footer'>
-                    <a href='Pagina1.php'>pagina 1</a>
-                    <a href='Pagina2.php'>pagina 2</a>
-                    <a href='Config.php'>config</a>
+                    <a href='Pagina1.php' id='pagina1'>pagina 1</a>
+                    <a href='Pagina2.php' id='pagina2'>pagina 2</a>
+                    <a href='Config.php' id='config'>config</a>
                     <a>" . $galleta['name'] . "</a>
                 </div>";
         }else{
             echo "<div id='footer'>
-                    <a href='Pagina1.php'>pagina 1</a>
-                    <a href='Pagina2.php'>pagina 2</a>
-                    <a href='Config.php'>config</a>
+                    <a href='Pagina1.php' id='pagina1'>pagina 1</a>
+                    <a href='Pagina2.php' id='pagina2'>pagina 2</a>
+                    <a href='Config.php' id='config'>config</a>
                     <a>anonimo</a>
                 </div>";
         }

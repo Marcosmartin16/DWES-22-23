@@ -23,6 +23,10 @@
             background-color: <?= $background ?>;
             color: <?= $font ?>;
         }
+
+        #config , #pagina2{
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>

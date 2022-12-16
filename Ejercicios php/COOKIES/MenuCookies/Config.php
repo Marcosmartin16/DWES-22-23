@@ -17,7 +17,7 @@
     }else{
         $background = "";
         $font = "";
-        $name = "anonimo";
+        $name = "";
     }
 ?>
 <!DOCTYPE html>
@@ -31,6 +31,10 @@
         #footer{
             background-color: <?= $background ?>;
             color: <?= $font ?>;
+        }
+
+        #pagina1 , #pagina2{
+            text-decoration: none;
         }
     </style>
 </head>
