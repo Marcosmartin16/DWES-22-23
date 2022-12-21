@@ -5,14 +5,8 @@
         require("$classPath${class}.php");
     });
 
-    $email = new Texto();
     $username = new Texto();
     $password = new Texto();
-
-    if(isset($_POST['login'])){
-
-
-    }
 
     if(isset($_POST['signUp'])){
 
@@ -49,13 +43,8 @@
     <title>Document</title>
     <style>
         #login {
-            margin-left: 350px;
+            margin-left: 40%;
             float: left;
-        }
-
-        #signUp {
-            margin-right: 350px;
-            float: right;
         }
     </style>
 </head>
@@ -70,19 +59,6 @@
             ?>
             <br><br>
             <input type="submit" value="Login" name="login" />
-        </form>
-    </div>
-    <div id="signUp">
-        <h1>SIGN UP</h1>
-        <br><br>
-        <form method="post">
-            <?php
-            $email->crear("email", 20, 4, $_POST);
-            $username->crear("username", 20, 4, $_POST);
-            $password->crear("password", 20, 4, $_POST);
-            ?>
-            <br>
-            <input type="submit" value="Sign up" name="signUp" />
         </form>
     </div>
 </body>

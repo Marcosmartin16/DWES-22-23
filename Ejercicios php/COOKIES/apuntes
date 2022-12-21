@@ -7,9 +7,28 @@ recuperar.php->usuario da email para recibir correo con token
 te envian un correo con un boton que te lleva a la pagina de cambiar contraseña con el token
 
 
-------------------------------------------------------------------------------
+********************************************************************************************
 
 
+
+
+    cliente                 |       servidor          |       fiable
+----------------------------|-------------------------|-----------------------
+    http-cabeceras          |       $_SERVER          |          X
+    url                     |       $_GET             |          X
+    fromulario              |       $_POST/$_GET      |          X
+    xhr(hml,http,request)   |       $_GET/$_POST      |          x
+    cabeceras               |       $_COOKIE          |          x
+
+
+
+
+SESIONES+token($_SESSION)
+al poner session_start te adjudica un token
+Servidor <- cliente
+genera token -> cookie
+
+************************************************************************************************
 
 
 
