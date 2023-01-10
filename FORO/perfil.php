@@ -1,9 +1,12 @@
 <?php
 session_start();
 
+$iniciado = false;
+
 if(isset($_SESSION['user'])){
-   print_r($_SESSION['user']);
-}else{
+   $nombre = $_SESSION['user'];
+   $iniciado = true;
+}else{ 
     header('Location: login.php');
     exit;
 }
@@ -20,8 +23,12 @@ if(isset($_SESSION['user'])){
 
 </head>
 <body>
-    <h1>PERFIL (PRIVADO)</h1>
-    <?php include('menu.php')?>
+    <div class="menu">
+      <?php include('menu.php')?>
+    </div>
+    <div class="titulo">
+        <h1>PERFIL (PRIVADO)</h1>
+    </div>
     <!--llamar funcion pinta todos los comentarios realizados por el usuario-->
 </body>
 </html>

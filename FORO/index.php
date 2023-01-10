@@ -20,11 +20,19 @@ if(isset($_SESSION['user'])){
 
 </head>
 <body>
+    <div class="menu">
+      <?php include('menu.php')?>
+    </div>
     <div class="titulo">
         <h1>PUBLICO</h1>
     </div>
-    <div class="menu">
-        <?php include('menu.php')?>
+    <div>
+        <div>
+            <a href="contenido.php?area=tema1">TEMA 1</a>
+        </div>
+        <div>
+            <a href="contenido.php?area=tema2">TEMA 2</a>
+        </div>
     </div>
 </body>
 </html>

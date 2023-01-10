@@ -6,11 +6,6 @@ session_start();
 $errorList = [];
 
 if(isset($_POST['submit'])){
-  
-  //numero de usuarios totales
-  $resultado = $mbd->query('SELECT * FROM usuarios');
-  $count = $resultado->rowCount();
-  $resultado->execute();
 
   $email = $_POST['email'];
 
@@ -27,11 +22,10 @@ if(isset($_POST['submit'])){
     if($exists == 0){
       $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
       //si todo va bien hace esto
-      $resultado = $mbd->prepare('INSERT INTO usuarios VALUES (:id,:email,:psw)');
+      $resultado = $mbd->prepare('INSERT INTO usuarios(email,pass) VALUES (:email,:pass)');
   
-      $resultado->bindValue(':id',$count+1);
       $resultado->bindValue(':email',$_POST['email']);
-      $resultado->bindValue(':psw', $passwordHash);
+      $resultado->bindValue(':pass', $passwordHash);
       $resultado->execute();
 
       $resultado = null;
