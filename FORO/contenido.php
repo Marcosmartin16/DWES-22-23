@@ -3,17 +3,19 @@ require_once('db.php');
 
 session_start();
 
+$iniciado = false;
 
 if(isset($_SESSION['user'])){
     $nombre = $_SESSION['user'];
+    $iniciado = true;
 }else{ 
     $nombre = "anonymous";
 }
 
 
 
-if(isset($_GET["area"])){
-    $area = $_GET["area"];
+if(isset($_GET["artista"])){
+    $artista = $_GET["artista"];
 }else{
     header('Location: index.php');
     exit;
@@ -24,30 +26,28 @@ if(isset($_POST['enviar']) && isset($_SESSION['user'])){
 
         $comentario = $_POST['comentario'];
 
-        $resultado = $mbd->prepare('INSERT INTO contenido(area, nombre, contenido, likes, dislikes) VALUES (:area, :nombre, :contenido, :likes, :dislikes)');
+        $resultado = $mbd->prepare('INSERT INTO contenido(artista, nombre, contenido) VALUES (:artista, :nombre, :contenido)');
 
-        $resultado->bindValue(':area',$area);
+        $resultado->bindValue(':artista',$artista);
         $resultado->bindValue(':nombre', $nombre);
         $resultado->bindValue(':contenido', $comentario);
-        $resultado->bindValue(':likes', 0);
-        $resultado->bindValue(':dislikes', 0);
 
         $resultado->execute();
 
         $resultado = null;
         $mdb = null;
 
-        header("Location: contenido.php?area=$area");
+        header("Location: contenido.php?artista=$artista");
         exit;
     }
 }
 
-function pintar($area,$mbd){
+function pintar($artista,$mbd){
 
-    $resultado = $mbd->prepare('SELECT nombre,contenido,likes,dislikes FROM contenido WHERE area = :area');
+    $resultado = $mbd->prepare('SELECT nombre,contenido FROM contenido WHERE artista = :artista');
 
     $resultado->setFetchMode(PDO::FETCH_ASSOC);
-    $resultado->bindValue(':area',$area);
+    $resultado->bindValue(':artista',$artista);
 
     $resultado->execute();
 
@@ -76,18 +76,20 @@ function pintar($area,$mbd){
       <?php include('menu.php')?>
     </div>
     <div class="titulo">
-        <h1><?= $area?></h1>
+        <h1>Barras <?= $artista?></h1>
     </div>
     <div>
-        <?php pintar($area, $mbd) ?> 
+        <?php pintar($artista, $mbd) ?> 
     </div>
     <br>
-    <div class="textArea">
-        <form action="contenido.php?area=<?= $area ?>" method="post">
+    <?php if($iniciado){ ?>
+        <div class="textArea">
+            <form action="contenido.php?artista=<?= $artista ?>" method="post">
 
-            <textarea placeholder='Algo que añadir?' rows='3' cols='50' name='comentario' class='texto'></textarea>";
-            <input type="submit" value="enviar" name="enviar" class="btnEnvio"/>
-        </form>
-    </div>
+                <textarea placeholder='Algo que añadir?' rows='3' cols='50' name='comentario' class='texto'></textarea>";
+                <input type="submit" value="enviar" name="enviar" class="btnEnvio"/>
+            </form>
+        </div>
+    <?php }?>
 </body>
 </html>

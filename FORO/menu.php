@@ -8,9 +8,11 @@
 <?php
   if(isset($_SESSION['user'])){ ?>
     <a href="perfil.php" class="perfilA"><?php print_r($nombre) ?></a>
-    <a href="logout.php" class="logoutA">exit</a>
+    <a href="index.php" class="index">artistas</a>
+    <a href="logout.php" class="logoutA">salir</a>
 <?php }else{ ?>
     <a href="perfil.php" class="perfilA"><?php print_r($nombre) ?></a>
-    <a href="login.php" class="loginA">login</a>
+    <a href="index.php" class="index">artistas</a>
+    <a href="login.php" class="loginA">log in</a>
     <a href="signUp.php" class="signUpA">sign up</a>
 <?php } ?>

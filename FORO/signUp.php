@@ -53,7 +53,7 @@ if(isset($_GET["error"])){
   <h1>SIGN UP</h1>
   <form action="signUp.php" method="post" class="login">
       <p>
-        <label for="email">Email:</label>
+        <label for="email">Username:</label>
         <input type="text" name="email" id="email" value="<?=$_POST['email']?>">
         <input type="hidden" name="url" id="url" value="<?=$url?>">
       </p>

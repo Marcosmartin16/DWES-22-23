@@ -1,13 +1,52 @@
 <?php
+
+require_once('db.php');
+
 session_start();
 
+$iniciado = false;
+
 if(isset($_SESSION['user'])){
-    print_r($_SESSION['user']);
     $nombre = $_SESSION['user'];
+    $iniciado = true;
 }else{
     $nombre = "anonymous";
 }
+if(isset($_POST['enviar'])){
+    if(!empty($_POST)){
 
+        $artistaNuevo = $_POST['comentario'];
+
+        $resultado = $mbd->prepare('INSERT INTO artistas(artista, nombre) VALUES (:artista, :nombre)');
+
+        $resultado->bindValue(':artista',$artistaNuevo);
+        $resultado->bindValue(':nombre', $nombre);
+
+        $resultado->execute();
+
+        $resultado = null;
+        $mdb = null;
+
+        header("Location: contenido.php?artista=$artistaNuevo");
+        exit;
+    }
+}
+function pintar($mbd){
+
+    $resultado = $mbd->query('SELECT artista FROM artistas');
+
+    $resultado->setFetchMode(PDO::FETCH_ASSOC);
+
+    $resultado->execute();
+
+    echo "<div class='contenedorContenidos'>";
+    while($row = $resultado->fetch()){
+      echo "<div class='contenedorArtistas'> 
+                <a class='artistaLista' href='contenido.php?artista=" . $row['artista'] . "'>" . $row['artista'] . "</a>
+            </div>";
+    }
+    echo "</div>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,15 +63,21 @@ if(isset($_SESSION['user'])){
       <?php include('menu.php')?>
     </div>
     <div class="titulo">
-        <h1>PUBLICO</h1>
+        <h1>Artistas</h1>
     </div>
-    <div>
-        <div>
-            <a href="contenido.php?area=tema1">TEMA 1</a>
-        </div>
-        <div>
-            <a href="contenido.php?area=tema2">TEMA 2</a>
+    <div class="artistas">
+        <div class="grupo1">
+           <?php pintar($mbd)?>
         </div>
     </div>
+    <?php if($iniciado){ ?>
+        <div class="textArea">
+            <form action="index.php" method="post">
+
+                <textarea placeholder='Nuevo artista' rows='3' cols='50' name='comentario' class='texto'></textarea>";
+                <input type="submit" value="enviar" name="enviar" class="btnEnvio"/>
+            </form>
+        </div>
+    <?php }?>
 </body>
 </html>

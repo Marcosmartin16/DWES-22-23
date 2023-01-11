@@ -15,13 +15,18 @@ INSERT INTO usuarios (email, pass) VALUES (
   'asd@qwe.es', '$2y$10$oUK2psl33/ISPfWU/RnnheZcN5So6SPFTpmdD6S6WMudkLvHY7eaa'
 );
 
+CREATE TABLE artistas (
+  id MEDIUMINT NOT NULL AUTO_INCREMENT,
+  artista       varchar(255) NOT NULL ,
+  nombre       varchar(255) NOT NULL ,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
 CREATE TABLE contenido (
   id MEDIUMINT NOT NULL AUTO_INCREMENT,
-  area       varchar(255) NOT NULL ,
+  artista       varchar(255) NOT NULL ,
   nombre       varchar(255) NOT NULL ,
-  contenido       varchar(255) NOT NULL ,
-  likes       numeric(10) NOT NULL,
-  dislikes       numeric(10) NOT NULL,
+  contenido       varchar(2000) NOT NULL ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 

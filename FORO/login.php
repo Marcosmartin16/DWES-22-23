@@ -61,10 +61,10 @@ print_r($_SESSION['user']);
   <link rel="stylesheet" type="text/css" media="all" href="css/estilo.css">
 </head>
 <body>
-  <h1>LOGIN</h1>
+  <h1 class="loginTitulo">LOGIN</h1>
   <form action="" method="post" class="login">
       <p>
-        <label for="email">Email:</label>
+        <label for="email">Username:</label>
         <input type="text" name="email" id="email" value="<?=$email?>">
         <input type="hidden" name="url" id="url" value="<?=$url?>">
       </p>
