@@ -9,6 +9,16 @@
             $_POST['nombre'], password_hash($_POST['passwd'],PASSWORD_DEFAULT), $_POST['correo']
         );
         $insertado = $DB->getExecuted();  
+        if($insertado){
+            Mailer::sendEmail(
+                $_POST['correo'],
+                "Nuevo usuario",
+                <<<EOL
+                    Bienvenido {$_POST['nombre']},\
+                    Has hecho bien en registrarte.
+                EOL
+            );
+        }
     }
 ?>
 <!DOCTYPE html>
