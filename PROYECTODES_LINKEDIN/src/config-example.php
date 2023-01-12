@@ -5,5 +5,5 @@ $CONFIG['db_name']="linkedin";
 $CONFIG['db_user']="linkedin";
 $CONFIG['db_pass']="linkedin";
 $CONFIG['db_host']="localhost";
-$CONFIG['secreto']="B49wQ17B";
+$CONFIG['secreto']="";
 ?>
