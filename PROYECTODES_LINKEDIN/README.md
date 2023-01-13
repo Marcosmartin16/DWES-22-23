@@ -67,3 +67,5 @@ Ejecutar
 sudo apt update
 sudo apt install mariadb-server
 sudo apt install php-mysql
+
+gg
