@@ -1,23 +1,29 @@
 <?php
     require("../src/init.php");
+    require("../src/mailer.php");
 
     $insertado = "";
-
+print_r($_POST);
     if(isset($_POST['registrar'])){
         $DB->ejecuta(
             "INSERT INTO usuarios (nombre, passwd, correo) VALUES (?,?,?)",
             $_POST['nombre'], password_hash($_POST['passwd'],PASSWORD_DEFAULT), $_POST['correo']
         );
-        $insertado = $DB->getExecuted();  
+        $insertado = $DB->getExecuted(); 
+        echo $insertado; 
         if($insertado){
-            Mailer::sendEmail(
+            $mail = new Mailer();
+            $mail->sendEmail(
                 $_POST['correo'],
                 "Nuevo usuario",
                 <<<EOL
-                    Bienvenido {$_POST['nombre']},\
+                    Bienvenido {$_POST['nombre']},
                     Has hecho bien en registrarte.
                 EOL
             );
+
+            /*header("Location: listado.php");
+            exit();*/
         }
     }
 ?>
@@ -32,7 +38,7 @@
 <body>
     <?php if(!$insertado) { ?>
 
-        <form action="listado.php" method="post">
+        <form action="" method="post">
             NOMBRE: <input type="text" name="nombre" id="nombre"><br>
             CONTRASEÑA: <input type="password" name="passwd" id="passwd"><br>
             EMAIL: <input type="text" name="correo" id=""><br>
