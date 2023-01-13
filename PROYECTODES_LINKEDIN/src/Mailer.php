@@ -6,17 +6,14 @@ use PHPMailer\PHPMailer\Exception;
 
 class Mailer{
 
-    function __construct(){}
-
     function sendEmail($email, $encabezadoEmail, $contenidoEmail){
         
-        require("config.php");
-
+        GLOBAL $CONFIG;
         $mail = new PHPMailer(true);
 
         try {
             //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.educa.madrid.org';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication

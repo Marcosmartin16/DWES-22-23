@@ -1,9 +1,9 @@
 <?php
     require("../src/init.php");
-    require("../src/mailer.php");
+    require("../src/Mailer.php");
 
     $insertado = "";
-print_r($_POST);
+
     if(isset($_POST['registrar'])){
         $DB->ejecuta(
             "INSERT INTO usuarios (nombre, passwd, correo) VALUES (?,?,?)",
@@ -22,8 +22,8 @@ print_r($_POST);
                 EOL
             );
 
-            /*header("Location: listado.php");
-            exit();*/
+            header("Location: listado.php");
+            die();
         }
     }
 ?>
