@@ -25,24 +25,34 @@ if(isset($_POST['login'])){
             if(isset($_POST['recuerdame']) && $_POST['recuerdame'] == 'on'){
                 //generar token
                 $token = bin2hex(openssl_random_pseudo_bytes($CONFIG['LONG_TOKEN']));
+
                 //guardar token
                 $DB->ejecuta(
                     "INSERT INTO tokens(id_usuario, valor) VALUES (?, ?)",
                     $_SESSION['id'],
                     $token
                 );
+
                 setcookie("recuerdame", $token, [
                     "expires" =>  time() + 7 * 24 * 60 * 60,
                     "httponly" => true
                 ]);
-
-                header("Location: listado.php");
-                die();
             }
+            
+            header("Location: listado.php");
+            die();
         }
     }else{
         $errores++;
     }
+}
+
+if(isset($_GET['redirect'])){
+    header("Location: {$_GET['redirect']}");
+    die();
+}else{
+    header("Location: listado.php");
+    die();
 }
 
 ?>

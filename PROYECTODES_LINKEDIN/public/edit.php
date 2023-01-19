@@ -1,7 +1,29 @@
 <?php
 
-if(!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ""){
-    header("Location; login.php?redirect=edit.php");
+require("../src/init.php");
+
+
+
+if(isset($_COOKIE['recuerdame'])){
+    
+    $DB->ejecuta("SELECT * FROM tokens WHERE valor = ?", $_COOKIE['recuerdame']);
+    $usuario = $DB->obtenDatos();
+    
+        //echo $usuario[0]['id_usuario'];
+    
+    $DB->ejecuta("SELECT nombre FROM usuarios WHERE id = ?", $usuario[0]['id_usuario']);
+    $usuario = $DB->obtenDatos();
+    
+        //echo $usuario[0]['nombre'];
+    
+    $_SESSION['usuario'] = $usuario[0]['nombre'];
+    
+    print_r($_SESSION['usuario']);
+    
+}
+
+if(!isset($_SESSION['usuario'])){
+    header("Location: login.php?redirect=edit.php");
     die();
 }
 
