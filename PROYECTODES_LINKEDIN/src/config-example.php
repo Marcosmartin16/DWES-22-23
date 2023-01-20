@@ -8,4 +8,6 @@ $CONFIG['db_host']="localhost";
 $CONFIG['secreto']="";
 $CONFIG['LONG_TOKEN']=64
 
+
+//recuerdame, recuperar contra, editar perfil, cambiar contra
 ?>

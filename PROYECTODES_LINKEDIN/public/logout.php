@@ -2,9 +2,9 @@
 
 require("../src/init.php");
 
-if(isset($_SESSION['nombre'])){
-    $_SESSION['nombre'] = "";
-    unset($_SESSION['nombre']);
+if(isset($_SESSION['usuario'])){
+    $_SESSION['usuario'] = "";
+    unset($_SESSION['usuario']);
 }
 
 session_destroy();

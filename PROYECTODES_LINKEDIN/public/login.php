@@ -4,7 +4,9 @@ require("../src/init.php");
 $errores = 0;
 
 if(isset($_POST['login'])){
+
     if($_POST['nombre'] != "" && $_POST['passwd'] != ""){
+        
         $nombre = $_POST['nombre'];
         $passwd = $_POST['passwd'];
 
@@ -22,7 +24,12 @@ if(isset($_POST['login'])){
             $_SESSION['id'] = $datos[0]['id'];
             $_SESSION['usuario'] = $datos[0]['nombre'];
 
-            if(isset($_POST['recuerdame']) && $_POST['recuerdame'] == 'on'){
+            if(!isset($_POST['recuerdame'])){
+                
+                //echo "hol";
+                header("Location: listado.php");
+                die();
+            }else{
                 //generar token
                 $token = bin2hex(openssl_random_pseudo_bytes($CONFIG['LONG_TOKEN']));
 
@@ -37,10 +44,10 @@ if(isset($_POST['login'])){
                     "expires" =>  time() + 7 * 24 * 60 * 60,
                     "httponly" => true
                 ]);
+
+                header("Location: listado.php");
+                die();
             }
-            
-            header("Location: listado.php");
-            die();
         }
     }else{
         $errores++;
@@ -49,9 +56,6 @@ if(isset($_POST['login'])){
 
 if(isset($_GET['redirect'])){
     header("Location: {$_GET['redirect']}");
-    die();
-}else{
-    header("Location: listado.php");
     die();
 }
 
