@@ -23,7 +23,7 @@ if(isset($_COOKIE['recuerdame'])){
 }
 
 if(!isset($_SESSION['usuario'])){
-    header("Location: login.php?redirect=edit.php");
+    header("Location: login.php");
     die();
 }
 
@@ -38,5 +38,6 @@ if(!isset($_SESSION['usuario'])){
 </head>
 <body>
     <h1>FORMULARIO PRIVADO EDITAR PERFIL</h1>
+    <a href="cambiarContra.php">Cambiar contra</a>
 </body>
 </html>

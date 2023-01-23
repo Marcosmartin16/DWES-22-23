@@ -22,7 +22,7 @@
                 EOL
             );
 
-            header("Location: listado.php");
+            header("Location: login.php");
             die();
         }
     }
