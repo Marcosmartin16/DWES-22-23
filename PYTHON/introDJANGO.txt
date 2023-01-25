@@ -1,0 +1,25 @@
+pip es un gestor de librerias
+sudo apt-get install python3-pip
+
+una vez instalado pip3 instalamos el framework django
+pip3 install django
+
+cada vez que ponga python pone directamente python3
+sudo apt install python-is-python3
+
+comprobar version de python
+python -m django --version
+
+django-admin
+
+creamos un proyexto en el directorio que queramos
+django-admin startproject mysite
+
+pasos
+cd mysite/
+cat mysite/urls.py
+
+iniciar servidor
+python manage.py runserver
+
+
