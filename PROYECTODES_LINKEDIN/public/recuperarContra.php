@@ -25,7 +25,19 @@ if(isset($_POST['btnRecuperar'])){
     );
     $datos = $DB->obtenDatos();
 
-    if($datos[0]['correo'] == $email){
+    $correoUsuario = $datos[0]['correo'];
+    $idUsuario = $datos[0]['id'];
+
+    if($correoUsuario== $email){
+
+        $token = bin2hex(openssl_random_pseudo_bytes($CONFIG['LONG_TOKEN']));
+
+        //guardar token
+        $DB->ejecuta(
+            "INSERT INTO tokens(id_usuario, valor) VALUES (?, ?)",
+            $idUsuario,
+            $token
+        );
 
         $mail = new Mailer();
         $mail->sendEmail(
@@ -35,7 +47,7 @@ if(isset($_POST['btnRecuperar'])){
                 HOLA {$datos[0]['nombre']},
                 Has solicitado la recuperacion de contraseña.
                 Pulsa el siguiente enlace para acceder a la recuperacion.
-                <a href='localhost:8000/recuperarContra.php?id={$datos[0]['id']}'>ENLACE DE RECUPERACION</a>
+                <a href='localhost:8000/recuperarContra.php?id={$token}'>ENLACE DE RECUPERACION</a>
             EOL
             );
     }
@@ -51,40 +63,53 @@ if(isset($_POST['btnCambiar'])){
     );
     $datos = $DB->obtenDatos();
 
-    if($email == $datos[0]['correo']){
-        if($_POST['nuevaContra'] == $_POST['repetirNuevaContra']){
-        
-            $DB->ejecuta(
-                "UPDATE usuarios SET passwd = ? WHERE id = ?",
-                password_hash($_POST['nuevaContra'],PASSWORD_DEFAULT),
-                $id
-            );    
+    $nombreUsuario = $datos[0]['nombre'];
+    $correoUsuario = $datos[0]['correo'];
+    $idUsuario = $datos[0]['id'];
     
-            $cambiado = $DB->getExecuted();
-    
-            if($cambiado){
-        
-                $mail = new Mailer();
-                $mail->sendEmail(
-                    $email,
-                    "Cambio de contraseña",
-                    <<<EOL
-                        HOLA {$datos[0]['nombre']},
-                        Has solicitado el cambio de contraseña.
-                        La nueva constraseña sera {$_POST['nuevaContra']}.
-                    EOL
-                    );
+    $DB->ejecuta(
+        "SELECT id_usuario, valor FROM tokens WHERE valor = ?",
+        $token
+    );
+    $datos = $DB->obtenDatos();
 
-                    header("Location: login.php");
-                    die();
+    if($idUsuario == $datos[0]['valor']){
+
+        if($email == $correoUsuario){
+            if($_POST['nuevaContra'] == $_POST['repetirNuevaContra']){
+            
+                $DB->ejecuta(
+                    "UPDATE usuarios SET passwd = ? WHERE id = ?",
+                    password_hash($_POST['nuevaContra'],PASSWORD_DEFAULT),
+                    $id
+                );    
+        
+                $cambiado = $DB->getExecuted();
+        
+                if($cambiado){
+            
+                    $mail = new Mailer();
+                    $mail->sendEmail(
+                        $email,
+                        "Cambio de contraseña",
+                        <<<EOL
+                            HOLA {$nombreUsuario},
+                            Has solicitado el cambio de contraseña.
+                            La nueva constraseña sera {$_POST['nuevaContra']}.
+                        EOL
+                        );
+
+                        header("Location: login.php");
+                        die();
+                }
+            }else{
+                echo "CONTRASEÑAS NO COINCIDEN";
             }
         }else{
-            echo "CONTRASEÑAS NO COINCIDEN";
-        }
-    }else{
 
-        echo "EMAIL NO CORRESPONDE";
-    }    
+            echo "EMAIL NO CORRESPONDE";
+        }   
+    } 
 }
 
 
