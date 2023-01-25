@@ -70,10 +70,12 @@ if(isset($_GET['redirect'])){
 </head>
 <body>
     <form action="" method="post">
-        Username:<input type="text" name="nombre" id="">
-        Password:<input type="password" name="passwd" id="">
+        Username:<input type="text" name="nombre" id=""><br>
+        Password:<input type="password" name="passwd" id=""><br>
         Recuerdame:<input type="checkbox" name="recuerdame" id="">
-        <input type="submit" value="Login" name="login">
+        <input type="submit" value="Login" name="login"><br>
+        <a href="registro.php">Crear cuenta</a><br>
+        <a href="recuperarContra.php">Recuperar contra</a>
     </form>
 </body>
 </html>

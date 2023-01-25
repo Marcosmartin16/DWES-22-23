@@ -43,6 +43,7 @@
             CONTRASEÑA: <input type="password" name="passwd" id="passwd"><br>
             EMAIL: <input type="text" name="correo" id=""><br>
             <input type="submit" name="registrar" value="registrar">
+            <a href="login.php">Ya tengo cuenta</a>
         </form>
     <?php }else { ?>
         Usuario registrado;

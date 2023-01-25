@@ -9,5 +9,5 @@ $CONFIG['secreto']="";
 $CONFIG['LONG_TOKEN']=64
 
 
-//recuerdame, recuperar contra, editar perfil, 
+// editar perfil
 ?>
