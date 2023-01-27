@@ -22,4 +22,87 @@ cat mysite/urls.py
 iniciar servidor
 python manage.py runserver
 
+crear poryecto
+django-admin sartproject <nombre>
+python manage.py startapp <nombre>
+
+mysite                      # django-admin sartproject <nombre>
+    db.sqlite3              # por defecto vase de datos sqlite
+    manage.py               # se crea solo, manejar el proyecto
+    mysite                  # mysite configuraciones generales del proyecto
+        asgi.py             # tiene que ver con el despliegue
+        __init__.py         # esta vacio indica que es un modulos de python
+        settings.py         # configuracion generale
+        urls.py             # informacion para el router, GENERAL. distribuidor de peticiones
+        wsgi.py             # tiene que ver con el despliegue
+    polls                   # primera aplicacion
+        admin.py            # lo veremos. tiene scaffolding
+        apps.py             # define info de polls
+        __init__.py         # esta vacio. indica que es un modulo de python
+        migrations          # cambio en la base de datos
+            __init__.py     
+        models.py           # defino clases de datos y logica de negocio
+        tests.py            # unit testing
+        urls.py             # dedino quien controla esa peticion (vista -> "controlador")
+        views.py            # interactua con modoelos y lo pinta en un template (template -> "vista")
+
+
+CREATE DATABASE mysite
+CREATE USER 'mysite'@'localhost' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON mysite.* TO 'mysite'@'localhost' WITH GRANT OPTION;
+
+
+instalar lector de python con mysql
+pip install mysqlclient
+
+si no deja hacer sudo su desde home
+apt update
+apt-get install python3-dev default-libmysqlclient-dev build-essential
+
+una vez todo instalado 
+desde Python/mysite 
+python manage.py migrate
+
+python manage.py shell (desde PYTHON/mysite)
+>>> from polls.models import Choice, Question
+>>> Question.objects.all()
+<QuerySet []>
+
+
+>>> from django.utils import timezone
+>>> objeto_pregunta =  Question(question_text="What's new?", pub_date=timezone.now())
+>>> objeto_pregunta.question_text="PRIMERA PREGUNTA"
+>>> objeto_pregunta.save()
+>>> objeto_pregunta =  Question(question_text="MOMENTO PREGUNTA?", pub_date=timezone.now())
+>>> objeto_pregunta.save()
+>>> Question.objects.all()
+<QuerySet [<Question: Question object (1)>, <Question: Question object (2)>]>
+
+
+for q in Question.objects.all():
+...     print(q.question_text)
+... 
+PRIMERA PREGUNTA
+MOMENTO PREGUNTA?
+
+una vez cambiada las clases de models
+cerramos terminal y volvemos a abrir pyhon manage.py shell desde PYTHON/mysite
+
+
+
+
+
+
+
+
+
+
+
+
+
+TAREA REPETIR EL TUTORIAL 1 Y 2 CON OTRAS CLASES 
+
+
+crear usuario con python desde PYTHON/mysite
+python mange.py createsuperuser
 
