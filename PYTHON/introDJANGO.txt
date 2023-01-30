@@ -88,21 +88,34 @@ MOMENTO PREGUNTA?
 una vez cambiada las clases de models
 cerramos terminal y volvemos a abrir pyhon manage.py shell desde PYTHON/mysite
 
-
-
-
-
-
-
-
-
-
+crear usuario con python desde PYTHON/mysite
+python mange.py createsuperuser
 
 
 
 TAREA REPETIR EL TUTORIAL 1 Y 2 CON OTRAS CLASES 
 
 
-crear usuario con python desde PYTHON/mysite
-python mange.py createsuperuser
 
+todos los usados quita humo 
+    python3
+    pip3
+    sudo apt-get install python3
+    pip3 install django
+    pyhon3 -m django --version
+    sudo apt install python-is-python3
+    django-admin
+    sudo apt install vim
+    vim ~/.bashrc
+
+        PATH=$PATH:~/.local/bin
+        export $PATH
+
+    django-admin startproject mysite
+    python manage.py runserver
+    python manage.py startapp polls
+    sudo su pip install mysqlclient
+    python manage.py migrate
+    python manage.py makemigrations polls
+    python manage.py shell
+    python manage.py createsuperuser
