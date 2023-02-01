@@ -1,0 +1,3 @@
+equipo(nombre, descripcion, anno)
+juegos(nombre, genero, descripcion, anno)
+genero()

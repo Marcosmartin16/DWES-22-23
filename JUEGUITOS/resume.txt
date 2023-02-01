@@ -1,0 +1,161 @@
+empezar nuevo proyecto
+# django-admin startproject cosa
+
+crear app
+# python manage.py startapp esports
+
+urls.py de cosa añado el url de esports
+# from django.contrib import admin
+# from django.urls import include, path
+
+# urlpatterns = [
+    # path('esports/', include('esports.urls')),
+    # path('admin/', admin.site.urls),
+# ]
+
+en esports creo nuevo fichero urls.py y copio
+# from django.urls import path
+
+# from . import views
+
+aqui añado las urls en urls.py de esports
+# urlpatterns = [
+    # path('', views.index, name='index'),
+# ]
+
+en views.py de esports importamos HttpResponse
+# from django.http import HttpResponse
+
+y añadimos el view del index que añadimos antes en urls.py
+# def index(request):
+    # return HttpResponse("HOLLIWIS")
+
+creamos base de datos en models.py de esports
+# from django.db import models
+
+# class Equipo(models.Model):
+    # nombre = models.CharField(max_length=50)
+    # descripcion = models.TextField()
+    # anio = models.DateField()
+
+    def __str__(self):
+        return f"{self.nombre} ({self.anio})" 
+
+# class Genero(models.Model):
+    nombre = models.CharField(max_length=50)
+    descripcion = models.TextField()
+
+    def __str__(self):
+        return f"{self.nombre}" 
+
+
+# class Juego(models.Model):
+    nombre = models.CharField(max_length=50)
+    descripcion = models.TextField()
+    anio = models.DateField()
+    genero = models.ForeignKey(Genero, on_delete=models.SET_NULL, null=True)
+    equipos = models.ManyToManyField(Equipo)
+
+    def __str__(self):
+        return f"{self.nombre} [{self.genero}]({self.anio})" 
+
+Para instalar la app nos vamos a settings,py de cosa y en INSTALLED APPS añadimos 'esports.apps.EsportsConfig'
+# INSTALLED_APPS = [
+    'esports.apps.EsportsConfig',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+
+creamos nueva base de datos desde consola usamos el mismo usuario que para mysite
+# CREATE DATABASE cosa;
+# GRANT ALL PRIVILEGES ON cosa.* TO 'mysite'@'localhost' WITH GRANT OPTION;
+
+en settings.py de cosa en el apartado database rellenamos con los datos de la base de datos
+# DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cosa',
+        'USER': 'mysite',
+        'PASSWORD': '1234',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+
+en settings tambien cambiar el Time_zone
+# TIME_ZONE = 'Europe/Madrid'
+
+para crear la base de datos primero debemos planificarla 
+# python manage.py makemigrations
+
+para crear la base de datos ejecutamos este comando desde cosa
+# python manage.py migrate
+
+en admin.py colocamos lo siguiente haciendo referencia a cada una de las tablas
+# from django.contrib import admin
+
+# from .models import Equipo, Genero, Juego
+
+# admin.site.register(Equipo)
+# admin.site.register(Genero)
+# admin.site.register(Juego)
+
+creamos nuestro usuario para poder logear
+# python manage.py createsuperuser
+
+nos metemos en /admin/ y nos logeamos con las credenciales
+# usuario = Marcos
+# passwd = 1234
+
+UNA VEZ SETEADA LA APP EMPIEZO CON LAS URLS
+en urls.py de esports añado las distintas urls 
+añadimos detalle_equipo detalle_juego y detalle_genero quedaria de la siguiente forma
+# urlpatterns = [
+    path('', views.index, name='esports_raiz'),
+    path('<str:nombre>/', views.detalle_equipo, name="esports_detalle_equipo"),
+    path('juego/<str:nombre>/', views.detalle_juego, name="esports_detalle_juego"),
+    path('genero/<str:nombre>/', views.detalle_genero, name="esports_detalle_genero"),
+]
+
+en views.py de esports creamos las views para las urls anteriores
+añadimos estas 3 vistas
+# def detalle_equipo(request, nombre):
+    return HttpResponse(f"El nombre del equipo es {nombre}")
+
+# def detalle_juego(request, nombre):
+    return HttpResponse(f"El nombre del equipo es {nombre}")
+
+# def detalle_genero(request, nombre):
+    return HttpResponse(f"El nombre del equipo es {nombre}")
+
+en cosa instalamos por la terminal
+# pip install django-extensions
+
+en settings de cosa añadimos la app
+# django_extensions
+
+en cosa por terminal escribimos
+# python manage.py shell_plus
+
+y dentro del shell escribimos 
+esto nos devuelve todos los equipos
+# Equipo.objects.all()
+
+para que nos devuelva uno en concreto es asi
+# Equipo.objects.get(nombre="Dawers")
+
+para filtrar por un valor
+# Equipo.objects.filter(nombre__startwith="D")
+
+en views.py de esports importamos los models de todo con
+# from .models import Equipo, Genero, Juego
+
+y en la vista de detalle_equipo le añadimos lo siguiente para poder sacar el nombredel equipo, la descripcion y los juegos a los que juega
+# def detalle_equipo(request, nombre):
+    e = Equipo.objects.get(nombre=nombre)
+    juegos = e.juego_set.all()
+    return HttpResponse(f"El nombre del equipo es {e.nombre}: {e.descripcion}")

@@ -23,7 +23,7 @@ iniciar servidor
 python manage.py runserver
 
 crear poryecto
-django-admin sartproject <nombre>
+django-admin startproject <nombre>
 python manage.py startapp <nombre>
 
 mysite                      # django-admin sartproject <nombre>
@@ -50,6 +50,10 @@ mysite                      # django-admin sartproject <nombre>
 CREATE DATABASE mysite
 CREATE USER 'mysite'@'localhost' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON mysite.* TO 'mysite'@'localhost' WITH GRANT OPTION;
+
+CREATE DATABASE local;
+CREATE USER 'local'@'localhost' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON local.* TO 'local'@'localhost' WITH GRANT OPTION;
 
 
 instalar lector de python con mysql
