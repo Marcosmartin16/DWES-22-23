@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ equipo.nombre }}
+{% endblock %}
+
+
+{% block content %}
+
+
+<main>
+    <h1 class="display-4 fw-bold">{{ equipo.nombre }}</h1>
+    <p class="lead mb-4">{{ equipo.nombre }}</p>
+    <img src= "{{ equipo.foto.url }}" alt="">
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <ul>
+            {% for juego in equipo.juegos.all %}
+                <li>{{ juego }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</main>
+{% endblock %}

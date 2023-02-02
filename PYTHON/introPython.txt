@@ -47,3 +47,35 @@ miinfo = {
 miinfo son diccionarios del tipo clave valor
 miinfo.keys() -> muestra las keys del diccionarios
 miinfo.values() -> muestra el valor del diccionario
+
+eleva al cuadrado todos los elementos de un array llamado nums
+>>> [x*x for x in nums]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+todos los elementos de un array a mayusculas
+>>> fruits = ["pera","palatano","melon"]
+>>> [x.upper() for x in fruits]
+['PERA', 'PALATANO', 'MELON']
+
+todos los elementos que empiezan por p
+>>> [x.startswith('p') for x in fruits]
+[True, True, False]
+
+lista de numeros random
+>>> import random
+>>> [random.randrange(0,10) for _ in range(0,5)]
+[9, 8, 8, 6, 9]
+
+condicional
+numeros impares del array
+>>> [x for x in nums if x%2 != 0]
+[7, 5, 7, 7]
+
+condicional con modificacion
+si es par eleva al cuadrado si es impar multiplica por -1
+>>> [x*x if x%2 == 0 else -1*x for x in nums]
+[-7, -5, 36, -7, -7]
+
+si es par eleva al cuadrado si es impar multiplica por -1 solo para los numeros mayores a 5
+>>> [x*x if x%2 == 0 else -1*x for x in nums if x > 5]
+[-7, 36, -7, -7]

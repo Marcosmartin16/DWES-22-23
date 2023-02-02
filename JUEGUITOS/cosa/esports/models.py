@@ -4,9 +4,10 @@ class Equipo(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField()
     anio = models.DateField()
+    foto = models.ImageField(upload_to='equipos', null=True)
 
     def __str__(self):
-        return f"{self.nombre} ({self.anio})" 
+        return f"{self.nombre} ({self.anio}) {self.foto}" 
 
 class Genero(models.Model):
     nombre = models.CharField(max_length=50)
@@ -21,7 +22,7 @@ class Juego(models.Model):
     descripcion = models.TextField()
     anio = models.DateField()
     genero = models.ForeignKey(Genero, on_delete=models.SET_NULL, null=True)
-    equipos = models.ManyToManyField(Equipo)
+    equipos = models.ManyToManyField(Equipo, related_name='juegos')
 
     def __str__(self):
         return f"{self.nombre} [{self.genero}]({self.anio})" 
