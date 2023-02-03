@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: rgb(104, 104, 104);
+            color: rgb(255, 255, 255);
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .multiplesNoticias{
+            display: flex;
+            justify-content: center;
+            border: 1px solid;
+            flex-wrap: wrap;
+            margin: 1%;
+        }
+
+        .unidadNoticia{
+            border: 1px solid;
+            width: 50%;
+            margin: 1%;
+            height: 30%;
+        }
+
+        .imgNoticia{
+            height: 30%;
+            width: 15%
+        }
+
+        .tituloNoticia{
+            text-decoration: none;
+            color: white;
+        }
+
+        .descripcionNoticia{
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

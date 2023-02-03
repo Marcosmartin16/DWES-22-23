@@ -74,6 +74,9 @@ creamos nueva base de datos desde consola usamos el mismo usuario que para mysit
 # CREATE DATABASE cosa;
 # GRANT ALL PRIVILEGES ON cosa.* TO 'mysite'@'localhost' WITH GRANT OPTION;
 
+CREATE DATABASE noticiario;
+GRANT ALL PRIVILEGES ON noticiario.* TO 'mysite'@'localhost' WITH GRANT OPTION
+
 en settings.py de cosa en el apartado database rellenamos con los datos de la base de datos
 # DATABASES = {
     'default': {
@@ -108,7 +111,7 @@ creamos nuestro usuario para poder logear
 # python manage.py createsuperuser
 
 nos metemos en /admin/ y nos logeamos con las credenciales
-# usuario = Marcos
+# usuario = Marcos (admin en noticiario)
 # passwd = 1234
 
 UNA VEZ SETEADA LA APP EMPIEZO CON LAS URLS
@@ -123,8 +126,7 @@ añadimos detalle_equipo detalle_juego y detalle_genero quedaria de la siguiente
 
 en views.py de esports creamos las views para las urls anteriores
 añadimos estas 3 vistas
-# def detalle_equipo(request, nombre):
-    return HttpResponse(f"El nombre del equipo es {nombre}")
+# 1
 
 # def detalle_juego(request, nombre):
     return HttpResponse(f"El nombre del equipo es {nombre}")

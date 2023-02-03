@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ noticias }}
+{% endblock %}
+
+
+{% block content %}
+    
+    <div class="multiplesNoticias">
+        {% for noticia in noticias %}
+            <div class="unidadNoticia">
+                <a href="detalle/{{ noticia.titulo }}" class="tituloNoticia">{{ noticia.titulo }}</a>
+                <br>
+                <img src= "{{ noticia.img1.url }}" alt="" class="imgNoticia">
+                <p class="descripcionNoticia">{{ noticia.descripcion }}</p>
+            </div>
+        {% endfor %}
+    </div>
+       
+{% endblock %}
