@@ -1,0 +1,106 @@
+html, body{
+    height: 98%;
+    width: 98%;
+    margin: auto;
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+}
+
+.productos{
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    flex-wrap: wrap;
+    margin: 1%;
+}
+
+.producto{
+    border: 1px solid;
+    width: 50%;
+    margin: 1%;
+    display: flex;
+    height: 30%;
+}
+
+/*.info{
+    border: 1px solid;
+    width: 80%;
+    padding: 1%;
+}
+
+.contieneFoto{
+    border: 1px solid;
+    width: 20%;
+    float: right;
+}
+
+.añadirProducto{
+    margin-top: 4%;
+    float: right;
+    border: 1px solid;
+}
+
+.descripcion, .titulo{
+    text-align: left;
+    border: 1px solid;
+}
+
+.descripcion{
+    margin-left: 2%;
+}
+
+.precio{
+    text-align: right;
+}
+
+.numeroProductos{
+    width: 20%;
+}*/
+
+/* .nombre */
+.contieneNombre{
+    border: 1px solid;
+}
+
+/* numeroProductos */
+.añadirProducto{
+    border: 1px solid;
+    float:right;
+}
+
+/* .descripcion */
+.contieneDescripcionPrecioFoto{
+    border: 1px solid;
+}
+
+.contieneDescripcionPrecio{
+    border: 1px solid;
+}
+
+        .descripcion, .precio{
+            border: 1px solid;
+            width: 80%;
+        }
+
+        .contieneFoto{
+            float: right;
+        }
+
+        .precio{
+            margin-left: 77%;
+            width: 6%;
+        }
+
+/* .precio */
+.contienePrecio{
+    border: 1px solid;
+}
+
+/* .image */
+.contieneFoto{
+    border: 1px solid;
+}
+

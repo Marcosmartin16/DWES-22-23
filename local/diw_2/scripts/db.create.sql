@@ -43,16 +43,12 @@ CREATE TABLE alimentacion (
     nombre VARCHAR(255) NOT NULL UNIQUE,
     img    VARCHAR(255),
     descripcion TEXT NOT NULL,
-    precio VARCHAR(255) NOT NULL,
+    precio VARCHAR(255) NOT NULL 
 );
 
-CREATE TABLE productos (
+CREATE TABLE pedido (
     id int auto_increment PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL UNIQUE,
-    img    VARCHAR(255),
-    descripcion TEXT NOT NULL,
-    precio VARCHAR(255) NOT NULL,
-    categoria  VARCHAR(255) NOT NULL
+    nombreProducto VARCHAR(255) NOT NULL UNIQUE
 );
 
 
@@ -61,19 +57,20 @@ CREATE USER 'localTeteria'@'localhost' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON localTeteria.* TO 'localTeteria'@'localhost' WITH GRANT OPTION;
 
 INSERT INTO cocteles (nombre, img, descripcion, precio)
-    VALUES ('coctel1', './img/coctail1.png', 'esto es el coctel 1', '11');
+    VALUES ('coctel1', './img/coctail1.png', 'esto es el coctel 1', '22');
 
 INSERT INTO cocteles (nombre, img, descripcion, precio)
     VALUES ('coctel2', './img/coctail1.png', 'esto es el coctel 2', '22');
-
-INSERT INTO cocteles (nombre, img, descripcion, precio)
-    VALUES ('coctel3', './img/coctail1.png', 'esto es el coctel 3', '33');
     
 INSERT INTO cocteles (nombre, img, descripcion, precio)
-    VALUES ('coctel4', './img/coctail1.png', 'esto es el coctel 4', '44');
+    VALUES ('coctel3', './img/coctail1.png', 'esto es el coctel 3', '22');
 
-INSERT INTO cocteles (nombre, img, descripcion, precio)
-    VALUES ('coctel5', './img/coctail1.png', 'esto es el coctel 5 ajkfhhnslhcañ exñwehf cas dhf sdfjhwcfhweñoxweñfqwef eufwuefh wñefkj wefh wefhpefu wefijm weiyr   2w weufhwep um  r   ieud`   wfugfhwqilfuwe crgwefhwejfbls PE DP ', '55');
+INSERT INTO cachimbas (nombre, img, descripcion, precio)
+    VALUES ('cachimbas1', './img/coctail1.png', 'esto es la cachimba 1', '22');
 
-INSERT INTO cocteles (nombre, img, descripcion, precio)
-    VALUES ('coctel6', './img/coctail1.png', 'esto es el coctel 6', '66');
+INSERT INTO cachimbas (nombre, img, descripcion, precio)
+    VALUES ('cachimbas2', './img/coctail1.png', 'esto es la cachimba 2', '22');
+    
+INSERT INTO cachimbas (nombre, img, descripcion, precio)
+    VALUES ('cachimbas3', './img/coctail1.png', 'esto es la cachimba 3', '22');
+
