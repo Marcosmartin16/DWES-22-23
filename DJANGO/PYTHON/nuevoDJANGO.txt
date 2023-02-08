@@ -1,3 +1,6 @@
 equipo(nombre, descripcion, anno)
 juegos(nombre, genero, descripcion, anno)
 genero()
+
+ovhcloud 0,81€
+freedns-> afraid.org
