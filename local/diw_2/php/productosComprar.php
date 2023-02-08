@@ -8,10 +8,7 @@ if(isset($_GET['nombreProductos'])){
 
 function pintarProductos($nombreProductos, $DB){
     
-    $cookie = "producto";
-
-    $DB->ejecuta("SELECT * from $nombreProductos");
-
+    $DB->ejecuta("SELECT * FROM productos where categoria = ?", $nombreProductos);
     $datos = $DB->obtenDatos();
 
     echo "<!DOCTYPE html>
@@ -26,7 +23,7 @@ function pintarProductos($nombreProductos, $DB){
             </head>
             <body>";
 
-    echo "<div class='titulo'>TITULO: " . $nombreProductos . " <input type='button' id='' value='añadir' name='' onclick='comprobarCookie(". $cookie .")'></div>";
+    echo "<div class='titulo'>TITULO: " . $nombreProductos . " <a href='carrito.php'>CARRITO</a></div>";
     
     echo "<div class='productos'>";
         array_walk($datos,function($element, $clave){

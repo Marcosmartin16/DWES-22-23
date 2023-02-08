@@ -10,8 +10,7 @@ function pintarProductos($nombreProductos, $DB){
     
     $cookie = "producto";
 
-    $DB->ejecuta("SELECT * from $nombreProductos");
-
+    $DB->ejecuta("SELECT * FROM productos where categoria = ?", $nombreProductos);
     $datos = $DB->obtenDatos();
 
     echo "<!DOCTYPE html>

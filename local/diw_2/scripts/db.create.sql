@@ -46,8 +46,18 @@ CREATE TABLE alimentacion (
     precio VARCHAR(255) NOT NULL 
 );
 
+CREATE TABLE productos (
+    id int auto_increment PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL UNIQUE,
+    img    VARCHAR(255),
+    descripcion TEXT NOT NULL,
+    precio VARCHAR(255) NOT NULL, 
+    categoria    VARCHAR(255)
+);
+
 CREATE TABLE pedido (
     id int auto_increment PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL UNIQUE,
     nombreProducto VARCHAR(255) NOT NULL UNIQUE
 );
 
@@ -65,12 +75,12 @@ INSERT INTO cocteles (nombre, img, descripcion, precio)
 INSERT INTO cocteles (nombre, img, descripcion, precio)
     VALUES ('coctel3', './img/coctail1.png', 'esto es el coctel 3', '22');
 
-INSERT INTO cachimbas (nombre, img, descripcion, precio)
-    VALUES ('cachimbas1', './img/coctail1.png', 'esto es la cachimba 1', '22');
+INSERT INTO productos (nombre, img, descripcion, precio, categoria)
+    VALUES ('cachimbas1', './img/coctail1.png', 'esto es la cachimba 1', '22', 'cachimbas');
 
-INSERT INTO cachimbas (nombre, img, descripcion, precio)
-    VALUES ('cachimbas2', './img/coctail1.png', 'esto es la cachimba 2', '22');
+INSERT INTO productos (nombre, img, descripcion, precio, categoria)
+    VALUES ('cachimbas2', './img/coctail1.png', 'esto es la cachimba 2', '22', 'cachimbas');
     
-INSERT INTO cachimbas (nombre, img, descripcion, precio)
-    VALUES ('cachimbas3', './img/coctail1.png', 'esto es la cachimba 3', '22');
+INSERT INTO productos (nombre, img, descripcion, precio, categoria)
+    VALUES ('cachimbas3', './img/coctail1.png', 'esto es la cachimba 3', '22', 'cachimbas');
 
