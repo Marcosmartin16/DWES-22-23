@@ -66,14 +66,14 @@ CREATE DATABASE localTeteria;
 CREATE USER 'localTeteria'@'localhost' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON localTeteria.* TO 'localTeteria'@'localhost' WITH GRANT OPTION;
 
-INSERT INTO cocteles (nombre, img, descripcion, precio)
-    VALUES ('coctel1', './img/coctail1.png', 'esto es el coctel 1', '22');
+INSERT INTO productos (nombre, img, descripcion, precio, categoria)
+    VALUES ('coctel1', './img/coctail1.png', 'esto es el coctel 1', '22', 'cocteles');
 
-INSERT INTO cocteles (nombre, img, descripcion, precio)
-    VALUES ('coctel2', './img/coctail1.png', 'esto es el coctel 2', '22');
+INSERT INTO productos (nombre, img, descripcion, precio, categoria)
+    VALUES ('coctel2', './img/coctail1.png', 'esto es el coctel 2', '22', 'cocteles');
     
-INSERT INTO cocteles (nombre, img, descripcion, precio)
-    VALUES ('coctel3', './img/coctail1.png', 'esto es el coctel 3', '22');
+INSERT INTO productos (nombre, img, descripcion, precio, categoria)
+    VALUES ('coctel3', './img/coctail1.png', 'esto es el coctel 3', '22', 'cocteles');
 
 INSERT INTO productos (nombre, img, descripcion, precio, categoria)
     VALUES ('cachimbas1', './img/coctail1.png', 'esto es la cachimba 1', '22', 'cachimbas');

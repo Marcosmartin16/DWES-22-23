@@ -25,7 +25,35 @@ function formato($array){
         echo "</table>";
 }
 
+function precioTotal($array, $DB){
+    $pedido = $array[0]['nombreProducto'];
+    $arraypedido = explode(',', $pedido);
+    $arrayPrecioTotal = [];
+
+    $DB->ejecuta("SELECT precio,nombre FROM productos");
+    $datos = $DB->obtenDatos();
+
+    $precios = $datos;
+
+    $DB->ejecuta("SELECT nombre FROM productos");
+    $datos = $DB->obtenDatos();
+
+    $nombres = $datos;
+
+    for($i = 0; $i < count($precios); $i++){
+        $arrayPrecios[$nombres[$i]['nombre']] = $precios[$i]['precio'];
+    }
+
+    $contadorPrecio = 0;
+    for($i = 0; $i < count($arraypedido); $i++){
+        $contadorPrecio += $arrayPrecios[$arraypedido[$i]];
+    }
+
+    return $contadorPrecio;
+}
+
 if(isset($_COOKIE['producto'])){
+
     $DB->ejecuta("SELECT * FROM pedido WHERE nombre = ?", $_SESSION['nombre']);
     $datos = $DB->obtenDatos();
 
@@ -72,6 +100,7 @@ if(isset($_COOKIE['producto'])){
 
     $pedido = mostarPedido($datos);
     formato($pedido);
+    print_r(precioTotal($datos, $DB));
     echo "<form method='post'><input type='submit' value='pagar' name='pagar'></form>";
 }
 
