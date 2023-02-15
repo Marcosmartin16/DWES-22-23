@@ -7,7 +7,7 @@ if(isset($_GET['nombreProductos'])){
 }
 
 function pintarProductos($nombreProductos, $DB){
-    
+
     $DB->ejecuta("SELECT * FROM productos where categoria = ?", $nombreProductos);
     $datos = $DB->obtenDatos();
 

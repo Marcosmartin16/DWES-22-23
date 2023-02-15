@@ -1,4 +1,4 @@
-<form action="{% url 'polls:vote' pregunta.id %}" method="post">
+<form action="{% url 'polls:vote' pregunta.pk %}" method="post">
     {% csrf_token %}
     <fieldset>
         <legend>
