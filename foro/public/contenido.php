@@ -16,18 +16,17 @@
       <?php include('menu.php')?>
     </div>
     <div class="titulo">
-        <h1>Artistas</h1>
+        <h1>Barras <?= $artista?></h1>
     </div>
-    <div class="artistas">
-        <div class="grupo1">
-           <?php pintar($mbd)?>
-        </div>
+    <div>
+        <?php pintar($artista, $mbd) ?> 
     </div>
+    <br>
     <?php if($iniciado){ ?>
         <div class="textArea">
-            <form action="index.php" method="post">
+            <form action="contenido.php?artista=<?= $artista ?>" method="post">
 
-                <textarea placeholder='Nuevo artista' rows='3' cols='50' name='comentario' class='texto'></textarea>";
+                <textarea placeholder='Algo que añadir?' rows='3' cols='50' name='comentario' class='texto'></textarea>";
                 <input type="submit" value="enviar" name="enviar" class="btnEnvio"/>
             </form>
         </div>
