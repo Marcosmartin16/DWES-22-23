@@ -6,7 +6,7 @@ mariadb
 
 CREATE DATABASE nombre;
 CREATE USER 'nombre'@'localhost' IDENTIFIED BY 'contraseña';
-GRANT ALL PRIVILEGES ON nombre.* TO 'nombre'@'nombre' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON nombre.* TO 'nombre'@'localhost' WITH GRANT OPTION;
 
 *****MOSTRAR DATABASES******
 
