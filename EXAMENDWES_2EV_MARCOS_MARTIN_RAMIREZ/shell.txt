@@ -1,0 +1,10 @@
+from incidencias.models import LineaDeMetro, Estaciones, Incidencia;
+
+objeto_linea = LineaDeMetro(nombre="Linea 1", color="azul", distancia="50")
+objeto_linea.save()
+
+objeto_estacion = Estaciones(nombre="valdecarros", LineaDeMetro.nombre="Linea 1");
+objeto_estacion.save()
+
+objeto_incidencia = Incidencia(texto="bombilla fundida", fecha="23-02-2023", Estaciones.nombre="valdecarros");
+objeto_incidencia.save();

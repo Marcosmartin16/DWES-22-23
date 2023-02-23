@@ -1,0 +1,13 @@
+{% block content %}
+    
+    <div>
+        {% for linea in lineas %}
+            <div>
+                {% for estacion in linea.estacionLinea.all %}
+                    <p class="linea">{{ linea.nombre }} - {{ estacion.nombre}} + <a href="{{ estacion.nombre }}">Nueva incidencia</a></p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+       
+{% endblock %}

@@ -1,0 +1,12 @@
+<form action="{% url 'incidencias:notificar' estacion.nombre %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>
+            <h1>{{ linea.nombre }}</h1>
+            <h3>{{ estacion.nombre }}</h3>
+        </legend>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <input type="text" name="texto" id="texto">
+    </fieldset>
+    <input type="submit" value="Notificar">
+</form>
