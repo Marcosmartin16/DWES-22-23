@@ -3,11 +3,10 @@ DROP TABLE IF EXISTS usuarios;
 
 CREATE TABLE usuarios (
     id int auto_increment PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL UNIQUE,
-    passwd VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    pass VARCHAR(255) NOT NULL,
     img    VARCHAR(255),
-    correo VARCHAR(255) NOT NULL UNIQUE,
-    descripcion TEXT
+    email VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE tokens (
@@ -21,3 +20,6 @@ CREATE TABLE tokens (
 CREATE DATABASE foroBarras;
 CREATE USER 'foroBarras'@'localhost' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON foroBarras.* TO 'foroBarras'@'localhost' WITH GRANT OPTION;
+
+CREATE DATABASE noticiario;
+GRANT ALL PRIVILEGES ON noticiario.* TO 'mysite'@'localhost' WITH GRANT OPTION;
